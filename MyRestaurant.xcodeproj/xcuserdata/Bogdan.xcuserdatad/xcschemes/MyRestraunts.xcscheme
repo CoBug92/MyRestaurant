@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "43F3E1521DA28100002BD7B1"
-               BuildableName = "MyRestraunts.app"
-               BlueprintName = "MyRestraunts"
-               ReferencedContainer = "container:MyRestraunts.xcodeproj">
+               BuildableName = "MyRestaurant.app"
+               BlueprintName = "MyRestaurant"
+               ReferencedContainer = "container:MyRestaurant.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "43F3E1661DA28101002BD7B1"
-               BuildableName = "MyRestrauntsTests.xctest"
-               BlueprintName = "MyRestrauntsTests"
-               ReferencedContainer = "container:MyRestraunts.xcodeproj">
+               BuildableName = "MyRestaurantTests.xctest"
+               BlueprintName = "MyRestaurantTests"
+               ReferencedContainer = "container:MyRestaurant.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -43,9 +43,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "43F3E1711DA28101002BD7B1"
-               BuildableName = "MyRestrauntsUITests.xctest"
-               BlueprintName = "MyRestrauntsUITests"
-               ReferencedContainer = "container:MyRestraunts.xcodeproj">
+               BuildableName = "MyRestaurantUITests.xctest"
+               BlueprintName = "MyRestaurantUITests"
+               ReferencedContainer = "container:MyRestaurant.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -53,9 +53,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "43F3E1521DA28100002BD7B1"
-            BuildableName = "MyRestraunts.app"
-            BlueprintName = "MyRestraunts"
-            ReferencedContainer = "container:MyRestraunts.xcodeproj">
+            BuildableName = "MyRestaurant.app"
+            BlueprintName = "MyRestaurant"
+            ReferencedContainer = "container:MyRestaurant.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -76,9 +76,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "43F3E1521DA28100002BD7B1"
-            BuildableName = "MyRestraunts.app"
-            BlueprintName = "MyRestraunts"
-            ReferencedContainer = "container:MyRestraunts.xcodeproj">
+            BuildableName = "MyRestaurant.app"
+            BlueprintName = "MyRestaurant"
+            ReferencedContainer = "container:MyRestaurant.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -95,9 +95,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "43F3E1521DA28100002BD7B1"
-            BuildableName = "MyRestraunts.app"
-            BlueprintName = "MyRestraunts"
-            ReferencedContainer = "container:MyRestraunts.xcodeproj">
+            BuildableName = "MyRestaurant.app"
+            BlueprintName = "MyRestaurant"
+            ReferencedContainer = "container:MyRestaurant.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

@@ -9,13 +9,13 @@
         <!--List of restaurant-->
         <scene sceneID="SoV-PD-jFt">
             <objects>
-                <tableViewController id="h9v-95-QUv" customClass="MyRestaurantTableViewController" customModule="MyRestraunts" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="h9v-95-QUv" customClass="MyRestaurantTableViewController" customModule="MyRestaurant" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="85" sectionHeaderHeight="28" sectionFooterHeight="28" id="ytR-Ay-wBH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Cell" editingAccessoryType="disclosureIndicator" rowHeight="85" id="cz3-5a-1ZK" customClass="MyRestaurantTableViewCell" customModule="MyRestraunts" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Cell" editingAccessoryType="disclosureIndicator" rowHeight="85" id="cz3-5a-1ZK" customClass="MyRestaurantTableViewCell" customModule="MyRestaurant" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="375" height="85"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cz3-5a-1ZK" id="7Os-5Y-Atf">
@@ -72,7 +72,7 @@
         <!--Details View Controller-->
         <scene sceneID="3uS-nC-SDb">
             <objects>
-                <viewController id="ua1-S4-2DC" customClass="DetailsViewController" customModule="MyRestraunts" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ua1-S4-2DC" customClass="DetailsViewController" customModule="MyRestaurant" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="7FI-rf-tWe"/>
                         <viewControllerLayoutGuide type="bottom" id="2D1-9G-WTt"/>
@@ -90,7 +90,7 @@
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 </imageView>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="O1G-vU-WIc" customClass="DetailsTableViewCell" customModule="MyRestraunts" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="O1G-vU-WIc" customClass="DetailsTableViewCell" customModule="MyRestaurant" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="392" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="O1G-vU-WIc" id="7aV-Cp-AFp">
