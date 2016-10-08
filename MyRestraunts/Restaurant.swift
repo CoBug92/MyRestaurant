@@ -1,6 +1,6 @@
 //
 //  Restaurant.swift
-//  MyRestraunts
+//  MyRestaurant
 //
 //  Created by Богдан Костюченко on 07/10/16.
 //  Copyright © 2016 Bogdan Kostyuchenko. All rights reserved.

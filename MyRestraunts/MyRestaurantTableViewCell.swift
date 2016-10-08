@@ -1,6 +1,6 @@
 //
-//  MyRestrauntsTableViewCell.swift
-//  MyRestraunts
+//  MyRestaurantTableViewCell.swift
+//  MyRestaurant
 //
 //  Created by Богдан Костюченко on 03/10/16.
 //  Copyright © 2016 Bogdan Kostyuchenko. All rights reserved.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MyRestrauntsTableViewCell: UITableViewCell {
+class MyRestaurantTableViewCell: UITableViewCell {
     @IBOutlet weak var thumbnailImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!

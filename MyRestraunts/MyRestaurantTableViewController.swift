@@ -1,6 +1,6 @@
 //
-//  MyRestrauntsTableViewController.swift
-//  MyRestraunts
+//  MyRestaurantTableViewController.swift
+//  MyRestaurant
 //
 //  Created by Богдан Костюченко on 03/10/16.
 //  Copyright © 2016 Bogdan Kostyuchenko. All rights reserved.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MyRestrauntsTableViewController: UITableViewController {
+class MyRestaurantTableViewController: UITableViewController {
     
     var MyRestaurant: [Restaurant] = [
         Restaurant(name: "Mcdonalds", type: "Fastfood", image: "Mcdonalds", location: "Moscow", wasVisited: false),
@@ -81,19 +81,19 @@ class MyRestrauntsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellIdentifier = "Cell" //Initial Identifier of cell
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! MyRestrauntsTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! MyRestaurantTableViewCell
         
         //Configurate the cell:
-        //Write value of restrauntLocation[""] in locationLabel
+        //Write value of restaurantLocation[""] in locationLabel
         cell.nameLabel.text = MyRestaurant[indexPath.row].name
         
-        //Write value of restrauntLocation[""] in locationLabel
+        //Write value of restaurantLocation[""] in locationLabel
         cell.locationLabel.text = MyRestaurant[indexPath.row].location
         
-        //Write value of restrauntType[""] in locationLabel
+        //Write value of restaurantType[""] in locationLabel
         cell.typeLabel.text = MyRestaurant[indexPath.row].type
         
-        //Write value of restrauntImage[""] in thumbnailImageView
+        //Write value of restaurantImage[""] in thumbnailImageView
         cell.thumbnailImageView.image = UIImage(named: MyRestaurant[indexPath.row].image)
         //Create a cercle image
         //cell.thumbnailImageView.frame.size.height/2 у нас квадратные изображения (сторона = диаметру вписанного в него окружности), так что применяем эту формулу
@@ -114,11 +114,11 @@ class MyRestrauntsTableViewController: UITableViewController {
     
     //ФУНКЦИЯ ТОЛЬКО ДЛЯ ДОБАВЛЕНИЯ КНОПКИ УДАЛЕНИЯ
 //    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-//        self.restrauntsWereVisited.remove(at: indexPath.row)
-//        self.restoranImage.remove(at: indexPath.row)
-//        self.restoranType.remove(at: indexPath.row)
-//        self.restoranNames.remove(at: indexPath.row)
-//        self.restoranLocation.remove(at: indexPath.row)
+//        self.restaurantWereVisited.remove(at: indexPath.row)
+//        self.restaurantImage.remove(at: indexPath.row)
+//        self.restaurantType.remove(at: indexPath.row)
+//        self.restaurantNames.remove(at: indexPath.row)
+//        self.restaurantLocation.remove(at: indexPath.row)
 //        
 //        //self.tableView.reloadData() //перезагрузка таблицы без анимации
 //        tableView.deleteRows(at: [indexPath], with: .fade)
@@ -216,10 +216,10 @@ class MyRestrauntsTableViewController: UITableViewController {
      // In a storyboard-based application, you will often want to do a little preparation before navigation
     //Сейчас будет осуществляться переход. Подготовительная функция к переходу
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showDetailsSegue" {  //Если наш идентификатор перехода является showDetailSegue
-            if let indexPath = self.tableView.indexPathForSelectedRow{  // опциональная привязка + создание indexPath
-                let destinationVC = segue.destination as! DetailsViewController //куда осуществляется переход
-                destinationVC.restaurantDetailsImage = self.MyRestaurant[indexPath.row].image
+        if segue.identifier == "ShowDetailsSegue" {
+            if let indexPath = self.tableView.indexPathForSelectedRow{
+                let destinationVC = segue.destination as! DetailsViewController
+                destinationVC.restaurant = self.MyRestaurant[indexPath.row]
             }
         }
      }
