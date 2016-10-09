@@ -96,7 +96,7 @@ class MyRestaurantTableViewController: UITableViewController {
         //Write value of restaurantImage[""] in thumbnailImageView
         cell.thumbnailImageView.image = UIImage(named: MyRestaurant[indexPath.row].image)
         //Create a cercle image
-        //cell.thumbnailImageView.frame.size.height/2 у нас квадратные изображения (сторона = диаметру вписанного в него окружности), так что применяем эту формулу
+        // у нас квадратные изображения (сторона квадрата = диаметру вписанного в него окружности), так что применяем эту формулу
         cell.thumbnailImageView.layer.cornerRadius = cell.thumbnailImageView.frame.size.height/2
         //Give access to change the ImageView
         cell.thumbnailImageView.clipsToBounds = true
@@ -107,10 +107,10 @@ class MyRestaurantTableViewController: UITableViewController {
         return cell
     }
     
-    //cкрытие TopBar
-    override var prefersStatusBarHidden: Bool{
-        return true
-    }
+//    //cкрытие TopBar
+//    override var prefersStatusBarHidden: Bool{
+//        return true
+//    }
     
     //ФУНКЦИЯ ТОЛЬКО ДЛЯ ДОБАВЛЕНИЯ КНОПКИ УДАЛЕНИЯ
 //    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
@@ -139,7 +139,7 @@ class MyRestaurantTableViewController: UITableViewController {
         
         let allShareAction = UITableViewRowAction(style: .default, title: "Share") { (UITableViewRowAction, indexPath) in
             // share item at indexPath
-            let allShareActionMenu = UIAlertController(title: nil, message: "Shere as", preferredStyle: .actionSheet)
+            let allShareActionMenu = UIAlertController(title: nil, message: "", preferredStyle: .actionSheet)
             
             let emailShareAction = UIAlertAction(title: "Email share", style: .default, handler: nil)
             let facebookShareAction = UIAlertAction(title: "FaceBook share", style: .default, handler: nil)
@@ -165,11 +165,25 @@ class MyRestaurantTableViewController: UITableViewController {
         
         //изменяем вид кнопки back из Details 
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.plain, target: nil, action: nil)
+        
+        self.tableView.estimatedRowHeight = 85 //изначальный размер ячейки (также для повышения производительности)
+        self.tableView.rowHeight = UITableViewAutomaticDimension    //высота вычисляется автоматически
+        
+        
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    }
+    
+    //прячем navigationBar
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationController?.hidesBarsOnSwipe = true
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
     override func didReceiveMemoryWarning() {

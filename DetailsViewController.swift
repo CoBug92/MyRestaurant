@@ -17,9 +17,23 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
+        //Подгружаем нужную фотку
         self.restaurantImageView.image = UIImage(named: restaurant.image)
+        //Убираем ненужные разделители
         self.tableView.tableFooterView = UIView(frame: CGRect.zero)
+        //Название в navigationBar будет по названию  ресторана
+        title = restaurant.name
+        //Автоматическое изменение высоты ячейки
+        self.tableView.estimatedRowHeight = 44 //изначальный размер ячейки (также для повышения производительности)
+        self.tableView.rowHeight = UITableViewAutomaticDimension //высота вычисляется автоматически
+    }
+    
+    //Функция которая отвечает за показ navigationBar
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationController?.hidesBarsOnSwipe = false
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
     override func didReceiveMemoryWarning() {

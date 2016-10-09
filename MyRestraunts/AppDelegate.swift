@@ -26,6 +26,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if let font = UIFont(name: "AppleSDGothicNeo-SemiBold", size: 22.0) {
             UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white, NSFontAttributeName: font]
         }
+        
+        UIApplication.shared.statusBarStyle = UIStatusBarStyle.lightContent
+        
         return true
     }
     
