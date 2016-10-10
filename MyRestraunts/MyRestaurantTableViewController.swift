@@ -84,6 +84,14 @@ class MyRestaurantTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! MyRestaurantTableViewCell
         
         //Configurate the cell:
+        //Write value of restaurantImage[""] in thumbnailImageView
+        cell.thumbnailImageView.image = UIImage(named: MyRestaurant[indexPath.row].image)
+        //Create a cercle image
+        // у нас квадратные изображения (сторона квадрата = диаметру вписанного в него окружности), так что применяем эту формулу
+        cell.thumbnailImageView.layer.cornerRadius = cell.thumbnailImageView.frame.size.height/2
+        //Give access to change the ImageView
+        cell.thumbnailImageView.clipsToBounds = true
+        
         //Write value of restaurantLocation[""] in locationLabel
         cell.nameLabel.text = MyRestaurant[indexPath.row].name
         
@@ -93,13 +101,6 @@ class MyRestaurantTableViewController: UITableViewController {
         //Write value of restaurantType[""] in locationLabel
         cell.typeLabel.text = MyRestaurant[indexPath.row].type
         
-        //Write value of restaurantImage[""] in thumbnailImageView
-        cell.thumbnailImageView.image = UIImage(named: MyRestaurant[indexPath.row].image)
-        //Create a cercle image
-        // у нас квадратные изображения (сторона квадрата = диаметру вписанного в него окружности), так что применяем эту формулу
-        cell.thumbnailImageView.layer.cornerRadius = cell.thumbnailImageView.frame.size.height/2
-        //Give access to change the ImageView
-        cell.thumbnailImageView.clipsToBounds = true
         
 //        cell.accessoryType = MyRestaurant[indexPath.row].wasVisited ? .checkmark : .none //запись в тернарном виде
 //        cell.tintColor = UIColor.black  //выбор цвета галочки
@@ -162,12 +163,14 @@ class MyRestaurantTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        //Убираем ненужные разделители
+        self.tableView.tableFooterView = UIView(frame: CGRect.zero)
         //изменяем вид кнопки back из Details 
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.plain, target: nil, action: nil)
         
+        //Автоматическое изменение высоты ячейки
         self.tableView.estimatedRowHeight = 85 //изначальный размер ячейки (также для повышения производительности)
-        self.tableView.rowHeight = UITableViewAutomaticDimension    //высота вычисляется автоматически
+        self.tableView.rowHeight = UITableViewAutomaticDimension //высота вычисляется автоматически
         
         
         

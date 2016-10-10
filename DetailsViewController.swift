@@ -12,6 +12,10 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     @IBOutlet var restaurantImageView: UIImageView!
     @IBOutlet weak var tableView: UITableView!
+    //переход на этот экран
+    @IBAction func close(seque: UIStoryboardSegue){
+        
+    }
     var restaurant: Restaurant! //переменная куда будут передаваться значения фоток
     
     override func viewDidLoad() {
