@@ -30,6 +30,9 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
         //Автоматическое изменение высоты ячейки
         self.tableView.estimatedRowHeight = 44 //изначальный размер ячейки (также для повышения производительности)
         self.tableView.rowHeight = UITableViewAutomaticDimension //высота вычисляется автоматически
+        
+        //изменяем вид кнопки back из Details
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back to details", style: UIBarButtonItemStyle.plain, target: nil, action: nil)
     }
     
     //Функция которая отвечает за показ navigationBar

@@ -9,12 +9,14 @@
 import UIKit
 import MapKit
 
-class MapRestaurantsLocationViewController: UIViewController {
+class MapRestaurantsLocationViewController: UIViewController, MKMapViewDelegate {
     @IBOutlet weak var mapView: MKMapView!
     var restaurant: Restaurant!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        mapView.delegate = self
         
         let geocoder = CLGeocoder()
         geocoder.geocodeAddressString(restaurant.location, completionHandler: { placemarks, error in
@@ -30,7 +32,7 @@ class MapRestaurantsLocationViewController: UIViewController {
                 //добавляем аннотации
                 let annotation = MKPointAnnotation()
                 annotation.title = self.restaurant.name
-                annotation.subtitle = self.restaurant.type
+                annotation.subtitle = self.restaurant.location
                 annotation.coordinate = (placemark.location!.coordinate)
                 
                 self.mapView.showAnnotations([annotation], animated: true)
@@ -38,25 +40,51 @@ class MapRestaurantsLocationViewController: UIViewController {
             }
         })
         
-        
-        
-        title = restaurant.name
+        //изменяем вид кнопки back из Details
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.plain, target: nil, action: nil)
     }
-
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        //создаем аннотацию
+        //индентификатор
+        let identifier = "CurrentPin"
+        if annotation.isKind(of: MKUserLocation.self){
+            return nil
+        }
+        //
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
+        
+        if annotationView == nil {
+            annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+            annotationView?.canShowCallout = true
+        }
+        
+        //добавим изображение
+        let leftSideAnnotationView = UIImageView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
+            leftSideAnnotationView.image = UIImage(named: restaurant.image)
+            annotationView?.leftCalloutAccessoryView = leftSideAnnotationView
+            
+            return annotationView
+    }
+    
+    
+    
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

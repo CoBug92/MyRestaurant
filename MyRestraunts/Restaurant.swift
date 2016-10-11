@@ -9,14 +9,14 @@
 import Foundation
 
 class Restaurant {
-    var name: String
-    var type: String
-    var image: String
-    var location: String
-    var wasVisited: Bool = false
+    var name: String                //The variable responsible for name of restaurant
+    var type: String                //The variable responsible for type of restaurant
+    var image: String               //The variable responsible for image of restaurant
+    var location: String            //The variable responsible for location of restaurant
+    var wasVisited: Bool = false    //The variable responsible for visit
     
+    //Create Restaurant object
     init(name: String, type: String, image: String, location: String, wasVisited: Bool) {
-        //как будет создаваться наш класс
         self.name = name
         self.type = type
         self.image = image

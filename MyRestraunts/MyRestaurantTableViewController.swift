@@ -10,6 +10,7 @@ import UIKit
 
 class MyRestaurantTableViewController: UITableViewController {
     
+    //The massive responsible for Restaurant objects
     var MyRestaurant: [Restaurant] = [
         Restaurant(name: "Mcdonalds", type: "Fastfood", image: "Mcdonalds", location: "Moscow, ul. Vavilova, 66", wasVisited: false),
         Restaurant(name: "Arpege", type: "Restaurants", image: "Arpege", location: "Paris", wasVisited: false),
@@ -23,65 +24,17 @@ class MyRestaurantTableViewController: UITableViewController {
         Restaurant(name: "Relae", type: "Restaurants", image: "Relae", location: "Copenhagen", wasVisited: false)
     ]
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        //Контроллер возможных действий:
-//        //создание view который появляется внизу с выбором действий, которые мы задали ниже
-//        let actionMenu = UIAlertController(title: nil, message: "What we need do?", preferredStyle: UIAlertControllerStyle.actionSheet)
-//
-//        //Создаем действия для контроллера
-//        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil) //Объявляем  кнопку cancel
-//        actionMenu.addAction(cancelAction)    //Добавляем в окошко кнопку cancel
-//        
-//        //действия отвечающее за отметку о посещяемости и ее отмене
-//        let iHaveBeenThereAction = UIAlertAction(title: "I have been there", style: .default, handler: {(action: UIAlertAction!) -> Void in
-//            let cell = tableView.cellForRow(at: indexPath)
-//            cell?.accessoryType = .checkmark    //отмечаем галочкой
-//            self.restrauntsWereVisited[indexPath.count] = true  //заносим в массив значение false
-//        })
-//        let iHaveNeverBeenThereAction = UIAlertAction(title: "I have never been there", style: .default, handler: {(action: UIAlertAction!) -> Void in
-//            let cell = tableView.cellForRow(at: indexPath)
-//            cell?.accessoryType = .none    //отмечаем галочкой
-//            self.restrauntsWereVisited[indexPath.count] = false //заносим в массив значение false
-//        })
-//        let cell = tableView.cellForRow(at: indexPath)
-//        if cell?.accessoryType == .checkmark {
-//            actionMenu.addAction(iHaveNeverBeenThereAction)
-//        } else {
-//            actionMenu.addAction(iHaveBeenThereAction)
-//        }
-//        
-//        //при нажатии на клавишу открывается Alert окно
-//        let callActionHandler = {(action: UIAlertAction!) -> Void in
-//            let warningMessage = UIAlertController(title: "The service doesn't work", message: "In this moment the ring cannot be complited", preferredStyle: .alert)
-//            let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-//            warningMessage.addAction(okAction)
-//            
-//            self.present(warningMessage, animated: true  , completion: nil)
-//        }
-//        let callAction = UIAlertAction(title: "Ring", style: .default, handler: callActionHandler)
-//        actionMenu.addAction(callAction) //Добавляем в окошко кнопку Ring
-//        
-//        tableView.deselectRow(at: indexPath, animated: true)    //Чтобы нажатая ячейка не оставалась выделенной
-//        
-//        self.present(actionMenu,animated: true, completion: nil)
-        
-    }
-    
     // MARK: - Table view data source
-    
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
+        return 1    //Count of sections in TableView
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return MyRestaurant.count
+        return MyRestaurant.count   //Count of rows in Section
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cellIdentifier = "Cell" //Initial Identifier of cell
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! MyRestaurantTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! MyRestaurantTableViewCell
         
         //Configurate the cell:
         //Write value of restaurantImage[""] in thumbnailImageView
@@ -247,6 +200,47 @@ class MyRestaurantTableViewController: UITableViewController {
     
     
     
-    
+    //    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    //        //Контроллер возможных действий:
+    //        //создание view который появляется внизу с выбором действий, которые мы задали ниже
+    //        let actionMenu = UIAlertController(title: nil, message: "What we need do?", preferredStyle: UIAlertControllerStyle.actionSheet)
+    //
+    //        //Создаем действия для контроллера
+    //        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil) //Объявляем  кнопку cancel
+    //        actionMenu.addAction(cancelAction)    //Добавляем в окошко кнопку cancel
+    //
+    //        //действия отвечающее за отметку о посещяемости и ее отмене
+    //        let iHaveBeenThereAction = UIAlertAction(title: "I have been there", style: .default, handler: {(action: UIAlertAction!) -> Void in
+    //            let cell = tableView.cellForRow(at: indexPath)
+    //            cell?.accessoryType = .checkmark    //отмечаем галочкой
+    //            self.restrauntsWereVisited[indexPath.count] = true  //заносим в массив значение false
+    //        })
+    //        let iHaveNeverBeenThereAction = UIAlertAction(title: "I have never been there", style: .default, handler: {(action: UIAlertAction!) -> Void in
+    //            let cell = tableView.cellForRow(at: indexPath)
+    //            cell?.accessoryType = .none    //отмечаем галочкой
+    //            self.restrauntsWereVisited[indexPath.count] = false //заносим в массив значение false
+    //        })
+    //        let cell = tableView.cellForRow(at: indexPath)
+    //        if cell?.accessoryType == .checkmark {
+    //            actionMenu.addAction(iHaveNeverBeenThereAction)
+    //        } else {
+    //            actionMenu.addAction(iHaveBeenThereAction)
+    //        }
+    //
+    //        //при нажатии на клавишу открывается Alert окно
+    //        let callActionHandler = {(action: UIAlertAction!) -> Void in
+    //            let warningMessage = UIAlertController(title: "The service doesn't work", message: "In this moment the ring cannot be complited", preferredStyle: .alert)
+    //            let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+    //            warningMessage.addAction(okAction)
+    //
+    //            self.present(warningMessage, animated: true  , completion: nil)
+    //        }
+    //        let callAction = UIAlertAction(title: "Ring", style: .default, handler: callActionHandler)
+    //        actionMenu.addAction(callAction) //Добавляем в окошко кнопку Ring
+    //
+    //        tableView.deselectRow(at: indexPath, animated: true)    //Чтобы нажатая ячейка не оставалась выделенной
+    //        
+    //        self.present(actionMenu,animated: true, completion: nil)
+    //    }
     
 }
