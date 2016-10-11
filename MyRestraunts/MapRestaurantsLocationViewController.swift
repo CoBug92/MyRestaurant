@@ -20,16 +20,16 @@ class MapRestaurantsLocationViewController: UIViewController, MKMapViewDelegate 
         
         let geocoder = CLGeocoder()
         geocoder.geocodeAddressString(restaurant.location, completionHandler: { placemarks, error in
-            //проверка на наличие ошибки
+            //compare for errors
             if error != nil{
                 print(error)
                 return
             }
-            //проверка массива placemarks
+            //compare massive placemarks
             if placemarks != nil && (placemarks?.count)! > 0{
                 let placemark = (placemarks?[0])! as CLPlacemark
                 
-                //добавляем аннотации
+                //add annotation
                 let annotation = MKPointAnnotation()
                 annotation.title = self.restaurant.name
                 annotation.subtitle = self.restaurant.location
@@ -39,19 +39,14 @@ class MapRestaurantsLocationViewController: UIViewController, MKMapViewDelegate 
                 self.mapView.selectAnnotation(annotation, animated: true)
             }
         })
-        
-        //изменяем вид кнопки back из Details
-        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.plain, target: nil, action: nil)
     }
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        //создаем аннотацию
-        //индентификатор
+        //Create annotation
         let identifier = "CurrentPin"
         if annotation.isKind(of: MKUserLocation.self){
             return nil
         }
-        //
         var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
         
         if annotationView == nil {
@@ -59,7 +54,7 @@ class MapRestaurantsLocationViewController: UIViewController, MKMapViewDelegate 
             annotationView?.canShowCallout = true
         }
         
-        //добавим изображение
+        //Add image
         let leftSideAnnotationView = UIImageView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
             leftSideAnnotationView.image = UIImage(named: restaurant.image)
             annotationView?.leftCalloutAccessoryView = leftSideAnnotationView

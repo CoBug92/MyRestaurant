@@ -19,40 +19,40 @@ class ShareViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //Анимация для фейсбука
+        //Animation for a facebook button
         self.facebookShareVIew.transform = CGAffineTransform(translationX: -500 , y: -500)
-        //Анимация для гугла
+        //Animation for a google buttom
         self.googleShareView.transform = CGAffineTransform(translationX: 500, y: -500)
-        //Анимация для Контакта
+        //Animation for a VKontake button
         self.vKontakeShareView.transform = CGAffineTransform(translationX: 500, y: 500)
-        //Анимация для email
+        //Animation for an email button
         self.emailShareView.transform = CGAffineTransform(translationX: -500, y: 500)
-        //Анимация для close
+        //Animation for a close button
         self.closeView.transform = CGAffineTransform(scaleX: 0.0, y: 0.0)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         
-        //Анимация для фейсбука
+        //Animation for a facebook button
         UIView.animate(withDuration: 1, delay: 0.2, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .allowAnimatedContent, animations: {
             self.facebookShareVIew.transform = CGAffineTransform(translationX: 0, y: 0)
             } , completion: nil)
-        //Анимация для гугла
+        //Animation for a google buttom
         UIView.animate(withDuration: 1, delay: 0.3, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .allowAnimatedContent, animations: {
             self.googleShareView.transform = CGAffineTransform(translationX: 0, y: 0)
             } , completion: nil)
         
-        //Анимация для VK
+        //Animation for a VKontake button
         UIView.animate(withDuration: 1, delay: 0.4, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .allowAnimatedContent, animations: {
             self.vKontakeShareView.transform = CGAffineTransform(translationX: 0, y: 0)
             } , completion: nil)
         
-        //Анимация для email
+        //Animation for an email button
         UIView.animate(withDuration: 1, delay: 0.5, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .allowAnimatedContent, animations: {
             self.emailShareView.transform  = CGAffineTransform(translationX: 0, y: 0)
             } , completion: nil)
         
-        //Анимация для close
+        //Animation for a close button
         UIView.animate(withDuration: 1, delay: 0.6, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .allowAnimatedContent, animations: {
             self.closeView.transform = CGAffineTransform(translationX: 0, y: 0)
             } , completion: nil)

@@ -37,95 +37,85 @@ class MyRestaurantTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! MyRestaurantTableViewCell
         
         //Configurate the cell:
-        //Write value of restaurantImage[""] in thumbnailImageView
+        //Write the value of MyRestaurant.image in thumbnailImageView
         cell.thumbnailImageView.image = UIImage(named: MyRestaurant[indexPath.row].image)
-        //Create a cercle image
-        // у нас квадратные изображения (сторона квадрата = диаметру вписанного в него окружности), так что применяем эту формулу
+        //Create the round pictures
+        //The side of square is equal the diameter of circle, that why /2
         cell.thumbnailImageView.layer.cornerRadius = cell.thumbnailImageView.frame.size.height/2
-        //Give access to change the ImageView
-        cell.thumbnailImageView.clipsToBounds = true
+        cell.thumbnailImageView.clipsToBounds = true    //Give access to change the ImageView
         
-        //Write value of restaurantLocation[""] in locationLabel
+        //Writes the value of MyRestaurant.name in nameLabel
         cell.nameLabel.text = MyRestaurant[indexPath.row].name
         
-        //Write value of restaurantLocation[""] in locationLabel
-        cell.locationLabel.text = MyRestaurant[indexPath.row].location
-        
-        //Write value of restaurantType[""] in locationLabel
+        //Writes the value of MyRestaurant.type in typeLabel
         cell.typeLabel.text = MyRestaurant[indexPath.row].type
         
+        //Writes the value of MyRestaurant.location in locationLabel
+        cell.locationLabel.text = MyRestaurant[indexPath.row].location
         
-//        cell.accessoryType = MyRestaurant[indexPath.row].wasVisited ? .checkmark : .none //запись в тернарном виде
-//        cell.tintColor = UIColor.black  //выбор цвета галочки
+        //Отмечаем галочкой посещеные рестораны
+        //        cell.accessoryType = MyRestaurant[indexPath.row].wasVisited ? .checkmark : .none //запись в тернарном виде
+        //        cell.tintColor = UIColor.black  //выбор цвета галочки
         
         return cell
     }
     
-//    //cкрытие TopBar
-//    override var prefersStatusBarHidden: Bool{
-//        return true
-//    }
     
-    //ФУНКЦИЯ ТОЛЬКО ДЛЯ ДОБАВЛЕНИЯ КНОПКИ УДАЛЕНИЯ
-//    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-//        self.restaurantWereVisited.remove(at: indexPath.row)
-//        self.restaurantImage.remove(at: indexPath.row)
-//        self.restaurantType.remove(at: indexPath.row)
-//        self.restaurantNames.remove(at: indexPath.row)
-//        self.restaurantLocation.remove(at: indexPath.row)
-//        
-//        //self.tableView.reloadData() //перезагрузка таблицы без анимации
-//        tableView.deleteRows(at: [indexPath], with: .fade)
-//    }
-//    
-//    
-//    //Дополнительные методы для свайпа
+    //Function creates swipe menu with additional buttons
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        
+        //Create variable which will responsible for delete button
         let deleteAction = UITableViewRowAction(style: .default, title: "Delete") { (UITableViewRowAction, indexPath) in
-            // share item at indexPath
+            
+            // delete item by indexPath
             self.MyRestaurant.remove(at: indexPath.row)
             
-            //self.tableView.reloadData() //перезагрузка таблицы без анимации
+            //reload table with animation
             tableView.deleteRows(at: [indexPath], with: .fade)
-        }
-        deleteAction.backgroundColor = UIColor(red: 0.8, green: 0, blue: 0, alpha: 1)
-        
-        let allShareAction = UITableViewRowAction(style: .default, title: "Share") { (UITableViewRowAction, indexPath) in
-            // share item at indexPath
-            let allShareActionMenu = UIAlertController(title: nil, message: "", preferredStyle: .actionSheet)
+            //self.tableView.reloadData() //reload table without animation
             
+        }
+        
+        //Create action menu when user clicks "Share"
+        let allShareAction = UITableViewRowAction(style: .default, title: "Share") { (UITableViewRowAction, indexPath) in
+            // Share item by indexPath
+            let allShareActionMenu = UIAlertController(title: nil, message: "Share as:", preferredStyle: .actionSheet)
+            
+            //Create constants responsible for Share buttons
             let emailShareAction = UIAlertAction(title: "Email share", style: .default, handler: nil)
             let facebookShareAction = UIAlertAction(title: "FaceBook share", style: .default, handler: nil)
             let vkontakteShareAction = UIAlertAction(title: "VKontake share", style: .default, handler: nil)
             let cancelShareAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
             
+            //Add buttons to action menu
             allShareActionMenu.addAction(emailShareAction)
             allShareActionMenu.addAction(facebookShareAction)
             allShareActionMenu.addAction(vkontakteShareAction)
             allShareActionMenu.addAction(cancelShareAction)
             
+            //Give access to add this buttons to menu
             self.present(allShareActionMenu, animated: true, completion: nil)
         }
-        allShareAction.backgroundColor = UIColor(red: 0, green: 0, blue: 1, alpha: 1)
+        //Change the color of Share button
+        allShareAction.backgroundColor = UIColor(red: 63 / 255, green: 84 / 255, blue: 242 / 255, alpha: 1)
         
-        return [allShareAction, deleteAction]
+        //return 2 possible button in action menu
+        return [deleteAction, allShareAction]
     }
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //Убираем ненужные разделители
+        
+        //Clear unnecessary dividers
         self.tableView.tableFooterView = UIView(frame: CGRect.zero)
-        //изменяем вид кнопки back из Details 
+        
+        //Change the interface of BACK button
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.plain, target: nil, action: nil)
         
-        //Автоматическое изменение высоты ячейки
-        self.tableView.estimatedRowHeight = 85 //изначальный размер ячейки (также для повышения производительности)
-        self.tableView.rowHeight = UITableViewAutomaticDimension //высота вычисляется автоматически
-        
-        
+        //Autosizing cell
+        self.tableView.estimatedRowHeight = 85                      //default height of cell (for increase capacity)
+        self.tableView.rowHeight = UITableViewAutomaticDimension    //Height is calculated automatically
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -134,10 +124,11 @@ class MyRestaurantTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
-    //прячем navigationBar
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        //NavigationBar hides
         self.navigationController?.hidesBarsOnSwipe = true
         self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
@@ -146,6 +137,20 @@ class MyRestaurantTableViewController: UITableViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    // MARK: - Navigation
+    
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    //Сейчас будет осуществляться переход. Подготовительная функция к переходу
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShowDetailsSegue" {
+            if let indexPath = self.tableView.indexPathForSelectedRow{
+                let destinationVC = segue.destination as! DetailsViewController
+                destinationVC.restaurant = self.MyRestaurant[indexPath.row]
+            }
+        }
+    }
+    
     
     /*
      // Override to support conditional editing of the table view.
@@ -174,30 +179,13 @@ class MyRestaurantTableViewController: UITableViewController {
      }
      */
     
-    /* 
+    /*
      // Override to support conditional rearranging of the table view.
      override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
      // Return false if you do not want the item to be re-orderable.
      return true
      }
      */
-    
-    
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    //Сейчас будет осуществляться переход. Подготовительная функция к переходу
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "ShowDetailsSegue" {
-            if let indexPath = self.tableView.indexPathForSelectedRow{
-                let destinationVC = segue.destination as! DetailsViewController
-                destinationVC.restaurant = self.MyRestaurant[indexPath.row]
-            }
-        }
-     }
-    
-    
-    
     
     
     //    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -239,8 +227,25 @@ class MyRestaurantTableViewController: UITableViewController {
     //        actionMenu.addAction(callAction) //Добавляем в окошко кнопку Ring
     //
     //        tableView.deselectRow(at: indexPath, animated: true)    //Чтобы нажатая ячейка не оставалась выделенной
-    //        
+    //
     //        self.present(actionMenu,animated: true, completion: nil)
+    //    }
+    
+    //    //Hide the TopBar
+    //    override var prefersStatusBarHidden: Bool{
+    //        return true
+    //    }
+    
+    //Function adds the delete button in the sliding menu
+    //    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    //        self.restaurantWereVisited.remove(at: indexPath.row)
+    //        self.restaurantImage.remove(at: indexPath.row)
+    //        self.restaurantType.remove(at: indexPath.row)
+    //        self.restaurantNames.remove(at: indexPath.row)
+    //        self.restaurantLocation.remove(at: indexPath.row)
+    //
+    //        //self.tableView.reloadData() //перезагрузка таблицы без анимации
+    //        tableView.deleteRows(at: [indexPath], with: .fade)
     //    }
     
 }
