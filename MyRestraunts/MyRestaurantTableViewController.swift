@@ -11,7 +11,7 @@ import UIKit
 class MyRestaurantTableViewController: UITableViewController {
     
     var MyRestaurant: [Restaurant] = [
-        Restaurant(name: "Mcdonalds", type: "Fastfood", image: "Mcdonalds", location: "Moscow", wasVisited: false),
+        Restaurant(name: "Mcdonalds", type: "Fastfood", image: "Mcdonalds", location: "Moscow, ul. Vavilova, 66", wasVisited: false),
         Restaurant(name: "Arpege", type: "Restaurants", image: "Arpege", location: "Paris", wasVisited: false),
         Restaurant(name: "Eleven Madison Park", type: "Restaurants", image: "Eleven Madison Park", location: "New York", wasVisited: false),
         Restaurant(name: "Pierre Herme", type: "Restaurants", image: "Pierre Herme", location: "Paris", wasVisited: false),

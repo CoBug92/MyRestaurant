@@ -86,6 +86,19 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == 2 {
+            self.performSegue(withIdentifier: "ShowTheMap", sender: nil)
+        }
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShowTheMap" {
+            let destinationVC = segue.destination as! MapRestaurantsLocationViewController
+            destinationVC.restaurant = restaurant
+        }
+    }
     
     
     /*

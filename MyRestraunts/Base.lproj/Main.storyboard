@@ -148,7 +148,11 @@
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="xRv-KI-b3T"/>
-                                    <barButtonItem systemItem="action" id="p0F-hI-gvv"/>
+                                    <barButtonItem systemItem="action" id="p0F-hI-gvv">
+                                        <connections>
+                                            <segue destination="NNm-lJ-vGA" kind="showDetail" id="GOC-PH-G04"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                         </subviews>
@@ -157,11 +161,136 @@
                     <connections>
                         <outlet property="restaurantImageView" destination="Opd-iB-Tnc" id="aON-Ux-JOn"/>
                         <outlet property="tableView" destination="eoW-TM-6UJ" id="m42-4D-dmy"/>
+                        <segue destination="e8z-PB-Wdy" kind="show" identifier="ShowTheMap" id="o7k-73-PxH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gVr-Q9-PGC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="pnX-aQ-YqH" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1452" y="134.48275862068968"/>
+        </scene>
+        <!--Map Restaurants Location View Controller-->
+        <scene sceneID="eW1-VT-Snd">
+            <objects>
+                <viewController id="e8z-PB-Wdy" customClass="MapRestaurantsLocationViewController" customModule="MyRestaurant" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="g4v-6m-RDC"/>
+                        <viewControllerLayoutGuide type="bottom" id="R6B-Z3-ZNX"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="572-ji-aph">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Phc-h0-sMh">
+                                <frame key="frameInset" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="Phc-h0-sMh" id="GVD-kg-xJ9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Zpo-ux-AhU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2279" y="134"/>
+        </scene>
+        <!--Share View Controller-->
+        <scene sceneID="sqY-Ik-FZ8">
+            <objects>
+                <viewController id="NNm-lJ-vGA" customClass="ShareViewController" customModule="MyRestaurant" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="U8R-V9-lWG"/>
+                        <viewControllerLayoutGuide type="bottom" id="uvy-Ug-W3o"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="uIY-6f-T9R">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="reviewBG" translatesAutoresizingMaskIntoConstraints="NO" id="jSg-Pz-Z3v">
+                                <frame key="frameInset" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wqu-du-lbb">
+                                <frame key="frameInset" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" id="jXb-wk-eYG" userLabel="Buttons">
+                                    <frame key="frameInset"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NTt-JQ-U8K" userLabel="Facebook Share View">
+                                            <frame key="frameInset" minX="98" minY="243" width="90" height="90"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="facebook" translatesAutoresizingMaskIntoConstraints="NO" id="YkU-dH-b97">
+                                                    <frame key="frameInset" width="90" height="90"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                            </subviews>
+                                        </view>
+                                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="T3R-q3-Mbm">
+                                            <frame key="frameInset" minX="187" minY="243" width="90" height="90"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="g" translatesAutoresizingMaskIntoConstraints="NO" id="J0x-Md-bZs">
+                                                    <frame key="frameInset" width="90" height="90"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                            </subviews>
+                                        </view>
+                                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WGm-ye-VIn" userLabel="VKontakte Share View">
+                                            <frame key="frameInset" minX="186" minY="332" width="90" height="90"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="vk" translatesAutoresizingMaskIntoConstraints="NO" id="Q0a-h2-ytV">
+                                                    <frame key="frameInset" minY="-1" width="90" height="90"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                            </subviews>
+                                        </view>
+                                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fb2-9T-Qbn" userLabel="Email Share View">
+                                            <frame key="frameInset" minX="99" minY="332" width="90" height="90"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="mail" translatesAutoresizingMaskIntoConstraints="NO" id="y1O-Ru-ZBX">
+                                                    <frame key="frameInset" minY="-1" width="90" height="90"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                            </subviews>
+                                        </view>
+                                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ics-06-PvG" userLabel="Close Button">
+                                            <frame key="frameInset" minX="304" minY="146" width="40" height="40"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wuu-GW-GiG">
+                                                    <frame key="frameInset" width="40" height="40"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" image="close"/>
+                                                    <connections>
+                                                        <segue destination="pnX-aQ-YqH" kind="unwind" unwindAction="closeWithSeque:" id="rV0-Ej-gu8"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                        </view>
+                                    </subviews>
+                                </view>
+                                <blurEffect style="dark"/>
+                            </visualEffectView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="closeView" destination="Ics-06-PvG" id="XaQ-mF-Uhj"/>
+                        <outlet property="emailShareView" destination="y1O-Ru-ZBX" id="0sw-jn-LAc"/>
+                        <outlet property="facebookShareVIew" destination="jXb-wk-eYG" id="3Oa-ny-ynw"/>
+                        <outlet property="googleShareView" destination="T3R-q3-Mbm" id="DeG-nK-Lan"/>
+                        <outlet property="vKontakeShareView" destination="Q0a-h2-ytV" id="VeA-iC-1hp"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uZ5-AP-SgS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1148" y="898"/>
         </scene>
         <!--Quick Review View Controller-->
         <scene sceneID="sKS-X5-lO1">
@@ -225,16 +354,16 @@ Did you like it?</string>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IO6-C4-HFQ">
+                                        <frame key="frameInset" minX="210" width="40" height="40"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="close"/>
+                                        <connections>
+                                            <segue destination="Bbb-TF-P9P" kind="unwind" unwindAction="closeWithSeque:" id="wUV-73-a1l"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IO6-C4-HFQ">
-                                <frame key="frameInset" minX="298" minY="180" width="40" height="40"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="close"/>
-                                <connections>
-                                    <segue destination="Bbb-TF-P9P" kind="unwind" unwindAction="closeWithSeque:" id="wUV-73-a1l"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -246,7 +375,7 @@ Did you like it?</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SJy-vS-2O6" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="Bbb-TF-P9P" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2288.8000000000002" y="133.5832083958021"/>
+            <point key="canvasLocation" x="1783" y="897"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="msR-nn-JHP">
@@ -270,8 +399,12 @@ Did you like it?</string>
     <resources>
         <image name="bad" width="192" height="192"/>
         <image name="close" width="128" height="128"/>
+        <image name="facebook" width="128" height="128"/>
+        <image name="g" width="128" height="128"/>
         <image name="good" width="192" height="192"/>
+        <image name="mail" width="128" height="128"/>
         <image name="reviewBG" width="302" height="568"/>
         <image name="so-so" width="192" height="192"/>
+        <image name="vk" width="128" height="128"/>
     </resources>
 </document>
