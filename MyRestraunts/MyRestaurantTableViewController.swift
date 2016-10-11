@@ -12,16 +12,23 @@ class MyRestaurantTableViewController: UITableViewController {
     
     //The massive responsible for Restaurant objects
     var MyRestaurant: [Restaurant] = [
-        Restaurant(name: "Mcdonalds", type: "Fastfood", image: "Mcdonalds", location: "Moscow, ul. Vavilova, 66", wasVisited: false),
-        Restaurant(name: "Arpege", type: "Restaurants", image: "Arpege", location: "Paris", wasVisited: false),
-        Restaurant(name: "Eleven Madison Park", type: "Restaurants", image: "Eleven Madison Park", location: "New York", wasVisited: false),
-        Restaurant(name: "Pierre Herme", type: "Restaurants", image: "Pierre Herme", location: "Paris", wasVisited: false),
-        Restaurant(name: "El Celler de Can Roca", type: "Restaurants", image: "El Celler de Can Roca", location: "Girona", wasVisited: false),
-        Restaurant(name: "Den", type: "Restaurants", image: "Den", location: "Tokyo", wasVisited: false),
-        Restaurant(name: "Dominique Crenn", type: "Restaurants", image: "Dominique Crenn", location: "San Francisco", wasVisited: false),
-        Restaurant(name: "Maido", type: "Restaurants", image: "Maido", location: "Lima", wasVisited: false),
-        Restaurant(name: "KFC", type: "Fastfood", image: "KFC", location: "Moscow", wasVisited: false),
-        Restaurant(name: "Relae", type: "Restaurants", image: "Relae", location: "Copenhagen", wasVisited: false)
+        Restaurant(name: "Barrafina", type: "Bar", image: "Barrafina", location: "10 Adelaide Street, Covent Garden, London", wasVisited: false),
+        Restaurant(name: "Bourkestreetbakery", type: "Bakery", image: "Bourkestreetbakery", location: "480 Bourke St, Melbourne VIC 3000, Australia", wasVisited: false),
+        Restaurant(name: "Cafe Deadend", type: "Cafe", image: "Cafedeadend", location: "72 Po Hing Fong, Hong Kong", wasVisited: false),
+        Restaurant(name: "Cafe Lore", type: "Cafe", image: "Cafelore", location: "4601 4th Ave, Brooklyn, NY 11220, United States", wasVisited: false),
+        Restaurant(name: "Confessional", type: "Restaurant", image: "Confessional", location: "308 E 6th St, New York, NY 10003, USA", wasVisited: false),
+        Restaurant(name: "Donostia", type: "Restaurant", image: "Donostia", location: " 10 Seymour Pl, London W1H 7ND, United Kingdom", wasVisited: false),
+        Restaurant(name: "Five Leaves", type: "Bar", image: "Fiveleaves", location: "18 Bedford Ave, Brooklyn, NY 11222, United States", wasVisited: false),
+        Restaurant(name: "For Kee", type: "Restaurant", image: "Forkeerestaurant", location: "200 Hollywood Rd, Sheung Wan, Hong Kong", wasVisited: false),
+        Restaurant(name: "Graham avenue meats", type: "Restaurant", image: "Grahamavenuemeats", location: "445 Graham Ave, Brooklyn, NY 11211, United States", wasVisited: false),
+        Restaurant(name: "Haigh's chocolate", type: "Chocolate shope", image: "Haighschocolate", location: "The Strand Arcade, 1/412-414 George St, Sydney NSW 2000, Australia", wasVisited: false),
+        Restaurant(name: "Homei", type: "Restaurant", image: "Homei", location: "Shop 8/38-52 Waterloo St, Surry Hills NSW 2010, Australia", wasVisited: false),
+        Restaurant(name: "Palomino Espresso", type: "Espresso Bar", image: "Palominoespresso", location: "1/61 York St, Sydney NSW 2000, Australia", wasVisited: false),
+        Restaurant(name: "Po's Atelier", type: "Bakery", image: "Posatelier", location: "70 Po Hing Fong, Hong Kong", wasVisited: false),
+        Restaurant(name: "Teakha", type: "Cafe", image: "Teakha", location: "18 Tai Ping Shan St, Hong Kong", wasVisited: false),
+        Restaurant(name: "Traif", type: "Restaurant", image: "Traif", location: "229 S 4th St, Brooklyn, NY 11211, United States", wasVisited: false),
+        Restaurant(name: "Upstate", type: "Seafood Restaurant", image: "Upstate", location: "95 1st Avenue, New York, NY 10003, United States", wasVisited: false),
+        Restaurant(name: "Waffle & Wolf", type: "Sandwich Shop", image: "Wafflewolf", location: "413 Graham Ave, Brooklyn, NY 11211, United States", wasVisited: false)
     ]
     
     // MARK: - Table view data source
@@ -124,6 +131,10 @@ class MyRestaurantTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //Delete selecting of row
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

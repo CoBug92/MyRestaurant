@@ -20,7 +20,7 @@
                                 <rect key="frame" x="0.0" y="92" width="375" height="85"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cz3-5a-1ZK" id="7Os-5Y-Atf">
-                                    <frame key="frameInset" width="342" height="85"/>
+                                    <frame key="frameInset" width="342" height="84"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UCj-Cs-3IJ">
@@ -100,7 +100,7 @@
                                         <rect key="frame" x="0.0" y="392" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="O1G-vU-WIc" id="7aV-Cp-AFp">
-                                            <frame key="frameInset" width="375" height="44"/>
+                                            <frame key="frameInset" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Key" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8uN-oJ-pdG">
@@ -140,7 +140,7 @@
                                 <frame key="frameInset" height="44" maxY="-1"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
-                                    <barButtonItem systemItem="compose" id="xbj-68-X2Y">
+                                    <barButtonItem image="favorite" id="xbj-68-X2Y">
                                         <connections>
                                             <segue destination="hUt-34-xbO" kind="popoverPresentation" popoverAnchorBarButtonItem="xbj-68-X2Y" id="qHe-k0-kQF">
                                                 <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
@@ -400,6 +400,7 @@ Did you like it?</string>
         <image name="bad" width="192" height="192"/>
         <image name="close" width="128" height="128"/>
         <image name="facebook" width="128" height="128"/>
+        <image name="favorite" width="25" height="25"/>
         <image name="g" width="128" height="128"/>
         <image name="good" width="192" height="192"/>
         <image name="mail" width="128" height="128"/>
