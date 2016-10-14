@@ -10,6 +10,10 @@ import UIKit
 
 class MyRestaurantTableViewController: UITableViewController {
     
+    @IBAction func unwindBackToHomeScreen(_ segue: UIStoryboardSegue) {
+        
+    }
+    
     //The massive responsible for Restaurant objects
     var MyRestaurant: [Restaurant] = [
         Restaurant(name: "Barrafina", type: "Bar", image: "Barrafina", location: "10 Adelaide Street, Covent Garden, London", wasVisited: false),
