@@ -500,7 +500,7 @@ Did you like it?</string>
                                         <rect key="frame" x="0.0" y="514" width="375" height="75"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fVS-y3-gG4" id="P0n-AI-Wn0">
-                                            <frame key="frameInset" width="375" height="74"/>
+                                            <frame key="frameInset" width="375" height="75"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Have you been there?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tUc-gg-AI5">
@@ -519,7 +519,7 @@ Did you like it?</string>
                                                         <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </state>
                                                     <connections>
-                                                        <action selector="isRestaurantVisited:" destination="SvV-c3-fNg" eventType="touchUpInside" id="UhJ-vZ-wET"/>
+                                                        <action selector="wasRestaurantVisited:" destination="SvV-c3-fNg" eventType="touchUpInside" id="Otj-wK-RlI"/>
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oas-mJ-ZOb">
@@ -531,7 +531,7 @@ Did you like it?</string>
                                                         <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </state>
                                                     <connections>
-                                                        <action selector="isRestaurantVisited:" destination="SvV-c3-fNg" eventType="touchUpInside" id="a7f-ZK-1rT"/>
+                                                        <action selector="wasRestaurantVisited:" destination="SvV-c3-fNg" eventType="touchUpInside" id="7ma-Wi-yWg"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
