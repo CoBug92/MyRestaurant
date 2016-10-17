@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="re6-Ha-hSC">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="re6-Ha-hSC">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -16,11 +16,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Cell" rowHeight="85" id="cz3-5a-1ZK" customClass="MyRestaurantTableViewCell" customModule="MyRestaurant" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="85" id="cz3-5a-1ZK" customClass="MyRestaurantTableViewCell" customModule="MyRestaurant" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="375" height="85"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cz3-5a-1ZK" id="7Os-5Y-Atf">
-                                    <frame key="frameInset" width="342" height="85"/>
+                                    <frame key="frameInset" width="375" height="85"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UCj-Cs-3IJ">
@@ -42,6 +42,10 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="check-icon-green" translatesAutoresizingMaskIntoConstraints="NO" id="zqQ-DE-FeX">
+                                            <frame key="frameInset" minX="345" minY="10" width="20" height="20"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="bottomMargin" secondItem="k2z-Mo-PPm" secondAttribute="bottom" constant="-2" id="Rsp-26-Jl7"/>
@@ -56,6 +60,7 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="checkImageView" destination="zqQ-DE-FeX" id="obF-50-srz"/>
                                     <outlet property="locationLabel" destination="ikU-aZ-ny3" id="qO2-HW-yNT"/>
                                     <outlet property="nameLabel" destination="ate-Uq-BMB" id="njH-OL-Fvx"/>
                                     <outlet property="thumbnailImageView" destination="UCj-Cs-3IJ" id="ebv-Z9-HPX"/>
@@ -595,6 +600,7 @@ Did you like it?</string>
     <resources>
         <image name="addImage" width="756" height="756"/>
         <image name="bad" width="192" height="192"/>
+        <image name="check-icon-green" width="16" height="16"/>
         <image name="close" width="128" height="128"/>
         <image name="facebook" width="128" height="128"/>
         <image name="favorite" width="25" height="25"/>

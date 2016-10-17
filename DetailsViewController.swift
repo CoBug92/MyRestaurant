@@ -16,13 +16,13 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBAction func close(seque: UIStoryboardSegue){
     }
     
-    var restaurant: Restaurant!
+    var restaurant: Task!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //Download nacessory image
-        self.restaurantImageView.image = UIImage(named: restaurant.image)
+        self.restaurantImageView.image = UIImage(data: restaurant.image! as Data)
         
         //Delete unnecessory dividers
         self.tableView.tableFooterView = UIView(frame: CGRect.zero)
