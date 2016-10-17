@@ -60,13 +60,24 @@ class MyRestaurantTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         //Create variable which will responsible for delete button
         let deleteAction = UITableViewRowAction(style: .default, title: "Delete") { (UITableViewRowAction, indexPath) in
+
+             let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+            let task = self.MyRestaurant[indexPath.row]
+            context.delete(task)
+            (UIApplication.shared.delegate as! AppDelegate).saveContext()
+            do {
+                self.MyRestaurant = try context.fetch(Task.fetchRequest())
+            } catch {
+                print("Fetching Failed")
+            }
+            tableView.reloadData()
             
-            // delete item by indexPath
-            self.MyRestaurant.remove(at: indexPath.row)
-            
-            //reload table with animation
-            tableView.deleteRows(at: [indexPath], with: .fade)
-            //self.tableView.reloadData() //reload table without animation
+//            // delete item by indexPath
+//            self.MyRestaurant.remove(at: indexPath.row)
+//            
+//            //reload table with animation
+//            tableView.deleteRows(at: [indexPath], with: .fade)
+//            //self.tableView.reloadData() //reload table without animation
             
         }
         
@@ -114,6 +125,9 @@ class MyRestaurantTableViewController: UITableViewController {
         //Autosizing cell
         self.tableView.estimatedRowHeight = 85                      //default height of cell (for increase capacity)
         self.tableView.rowHeight = UITableViewAutomaticDimension    //Height is calculated automatically
+        
+        
+        
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
