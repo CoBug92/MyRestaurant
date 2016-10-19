@@ -35,7 +35,7 @@ class MyRestaurantTableViewController: UITableViewController, NSFetchedResultsCo
         //создаем запрос
         let fetchRequest: NSFetchRequest<Restaurant> = Restaurant.fetchRequest()
         //создаем дискриптор
-        let sortDescriptor = NSSortDescriptor(key: "Name", ascending: true)
+        let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
         //для получения данных
         fetchRequest.sortDescriptors = [sortDescriptor]
         //создаем контекст
@@ -66,8 +66,8 @@ class MyRestaurantTableViewController: UITableViewController, NSFetchedResultsCo
     
     //MARK: - Fetch results controller delegate
     //вызывается перед тем как контроллер поменяет свой контент
-    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        tableView.beginUpdates() //предупреждает что сейчас будет обновление
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.beginUpdates()
     }
     
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
@@ -81,9 +81,11 @@ class MyRestaurantTableViewController: UITableViewController, NSFetchedResultsCo
         default: tableView.reloadData()
         }
         restaurants = controller.fetchedObjects as! [Restaurant]
-        tableView.endUpdates() //заканчивается обновления
     }
     
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.endUpdates()
+    }
     
     
     

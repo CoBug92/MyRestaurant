@@ -96,16 +96,18 @@ class AddRestaurantTableViewController: UITableViewController, UIImagePickerCont
                 //создаем экземпляр нашего класса в нашем контексте
                 let restaurant = Restaurant(context: context)
                 //устанавливаем все свойства
-                restaurant.name = nameTextField.text!
-                restaurant.type = typeTextField.text!
-                restaurant.location = locationTextField.text!
+                restaurant.name = nameTextField.text
+                restaurant.type = typeTextField.text
+                restaurant.location = locationTextField.text
                 restaurant.wasVisited = wasVisited
                 if let image = imageView.image {
+                    // as we expect to get binary data so we cast to NSData
                     restaurant.image = UIImagePNGRepresentation(image) as NSData?
                 }
-                //Save data to CodeData
+                //Save context
                 do {
                     try context.save()
+                    print("Data was been saved")
                 } catch let error as NSError {
                     print("Couldn't save data \(error), \(error.userInfo)")
                 }

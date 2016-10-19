@@ -1,6 +1,6 @@
 //
 //  DetailsTableViewCell.swift
-//  Eateries
+//  MyRestraunts
 //
 //  Created by Богдан Костюченко on 08/10/16.
 //  Copyright © 2016 Bogdan Kostyuchenko. All rights reserved.

@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		43138DED1DAC0D7B0059E470 /* QuickReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43138DEC1DAC0D7B0059E470 /* QuickReviewViewController.swift */; };
 		43145D591DB79937004E9910 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43145D581DB79937004E9910 /* CoreDataStack.swift */; };
-		431579621DB5267000DA215C /* Eateries.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 431579611DB5267000DA215C /* Eateries.xcdatamodel */; };
+		431579621DB5267000DA215C /* MyRestaurant.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 431579611DB5267000DA215C /* MyRestaurant.xcdatamodel */; };
 		431579641DB52ABE00DA215C /* AddRestaurantTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431579631DB52ABE00DA215C /* AddRestaurantTableViewController.swift */; };
 		434404D51DA772AF001622E8 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434404D41DA772AF001622E8 /* DetailsViewController.swift */; };
 		4356B39E1DB70552005CE5EB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4356B39D1DB70552005CE5EB /* Assets.xcassets */; };
@@ -46,7 +46,7 @@
 /* Begin PBXFileReference section */
 		43138DEC1DAC0D7B0059E470 /* QuickReviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickReviewViewController.swift; sourceTree = "<group>"; };
 		43145D581DB79937004E9910 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
-		431579611DB5267000DA215C /* Eateries.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Eateries.xcdatamodel; sourceTree = "<group>"; };
+		431579611DB5267000DA215C /* MyRestaurant.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MyRestaurant.xcdatamodel; sourceTree = "<group>"; };
 		431579631DB52ABE00DA215C /* AddRestaurantTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddRestaurantTableViewController.swift; sourceTree = "<group>"; };
 		434404D41DA772AF001622E8 /* DetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DetailsViewController.swift; path = ../DetailsViewController.swift; sourceTree = "<group>"; };
 		4356B39D1DB70552005CE5EB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -191,8 +191,8 @@
 		43F3E1841DA281F6002BD7B1 /* Supporting files */ = {
 			isa = PBXGroup;
 			children = (
+				431579611DB5267000DA215C /* MyRestaurant.xcdatamodel */,
 				4356B39D1DB70552005CE5EB /* Assets.xcassets */,
-				431579611DB5267000DA215C /* Eateries.xcdatamodel */,
 				43F3E15F1DA28101002BD7B1 /* LaunchScreen.storyboard */,
 				43F3E1621DA28101002BD7B1 /* Info.plist */,
 			);
@@ -344,7 +344,7 @@
 				43B019D31DA8FF7200A27BA8 /* DetailsTableViewCell.swift in Sources */,
 				431579641DB52ABE00DA215C /* AddRestaurantTableViewController.swift in Sources */,
 				43145D591DB79937004E9910 /* CoreDataStack.swift in Sources */,
-				431579621DB5267000DA215C /* Eateries.xcdatamodel in Sources */,
+				431579621DB5267000DA215C /* MyRestaurant.xcdatamodel in Sources */,
 				43F3E1861DA28222002BD7B1 /* MyRestaurantTableViewController.swift in Sources */,
 				43138DED1DAC0D7B0059E470 /* QuickReviewViewController.swift in Sources */,
 				43F3E1571DA28101002BD7B1 /* AppDelegate.swift in Sources */,
