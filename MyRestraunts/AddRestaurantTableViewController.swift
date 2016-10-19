@@ -24,8 +24,8 @@ class AddRestaurantTableViewController: UITableViewController, UIImagePickerCont
     override func viewDidLoad() {
         super.viewDidLoad()
         //Colors of buttons
-        noButton.backgroundColor = #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)
-        yesButton.backgroundColor = #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)
+        noButton.backgroundColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
+        yesButton.backgroundColor = #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)
         
     }
     
@@ -37,13 +37,13 @@ class AddRestaurantTableViewController: UITableViewController, UIImagePickerCont
         if indexPath.row == 0 {
             
             let allertController = UIAlertController(title: "Choose right action", message: nil, preferredStyle: .actionSheet)
+            let cancelAction = UIAlertAction(title: "Camera", style: .default, handler: {(action) in
+                self.chooseImagePickerAction(source: .camera)
+            })
             let photoLibraryAction = UIAlertAction(title: "Photo Library", style: .default, handler: { (action) in
                 self.chooseImagePickerAction(source: .photoLibrary)
             })
-            let cancelAction = UIAlertAction(title: "Camera", style: .cancel, handler: {(action) in
-                self.chooseImagePickerAction(source: .camera)
-            })
-            let cameraAction = UIAlertAction(title: "Camera", style: .default, handler: nil)
+            let cameraAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
             allertController.addAction(cameraAction)
             allertController.addAction(photoLibraryAction)
             allertController.addAction(cancelAction)
@@ -121,7 +121,7 @@ class AddRestaurantTableViewController: UITableViewController, UIImagePickerCont
             noButton.backgroundColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
         } else {
             wasVisited = false
-            sender.backgroundColor = #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)
+            sender.backgroundColor = #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)
             yesButton.backgroundColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
         }
     }
