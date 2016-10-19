@@ -10,7 +10,6 @@ import UIKit
 
 class QuickReviewViewController: UIViewController {
     
-    
     @IBOutlet weak var windowView: UIView!
     @IBOutlet weak var badButton: UIButton!
     @IBOutlet weak var sosoButton: UIButton!
@@ -18,25 +17,10 @@ class QuickReviewViewController: UIViewController {
     
     var restRating: String?
     
-    @IBAction func rateEateries (sender: UIButton) {
-        switch sender.tag  {
-        case 0:
-            restRating = "bad"
-        case 1:
-            restRating = "soso"
-        case 2:
-            restRating = "perfect"
-        default:
-            break
-        }
-        performSegue(withIdentifier: "unwindSequeToDVC", sender: sender)
-    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        
         //Create darkBlurEffect
         let darkBlurEffect = UIBlurEffect(style: UIBlurEffectStyle.dark)
         let darkBlurEffectView = UIVisualEffectView(effect: darkBlurEffect)
@@ -53,7 +37,7 @@ class QuickReviewViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         
-        //Create animation for rating
+        //Create animation for markButtons
         let buttonArray = [badButton, sosoButton, perfectButton]
         for (index, button) in buttonArray.enumerated() {
             let delay = Double(index) * 0.2
@@ -61,6 +45,23 @@ class QuickReviewViewController: UIViewController {
                 button?.transform = CGAffineTransform(scaleX: 1, y: 1)
                 }, completion: nil)
         }
+    }
+    
+    
+    
+    //MARK: -Action
+    @IBAction func rateEateries (sender: UIButton) {
+        switch sender.tag  {
+        case 0:
+            restRating = "bad"
+        case 1:
+            restRating = "soso"
+        case 2:
+            restRating = "perfect"
+        default:
+            break
+        }
+        performSegue(withIdentifier: "unwindSequeToDVC", sender: sender)
     }
     
 }

@@ -13,8 +13,8 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var rateButton: UIButton!
     @IBOutlet var restaurantImageView: UIImageView!
     @IBOutlet weak var tableView: UITableView!
-    //Function responsible for close RatingView and ShareVIew
     
+    //Function responsible for send rateImage or close RatingView and ShareVIew
     @IBAction func unwindSegue(segue: UIStoryboardSegue) {
         guard let svc = segue.source as? QuickReviewViewController else { return }
         guard let rating = svc.restRating else { return }
@@ -95,6 +95,8 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
+    
+    // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         //Compare number of row. If number of row is 2 (location) {
         if segue.identifier == "ShowTheMap" {
@@ -103,16 +105,4 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
             destinationVC.restaurant = restaurant
         }
     }
-    
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
 }

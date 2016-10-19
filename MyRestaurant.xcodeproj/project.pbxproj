@@ -95,6 +95,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		43145D571DB77D07004E9910 /* Share&Rate */ = {
+			isa = PBXGroup;
+			children = (
+				4389BDF31DACE97500963CD4 /* ShareViewController.swift */,
+				43138DEC1DAC0D7B0059E470 /* QuickReviewViewController.swift */,
+			);
+			name = "Share&Rate";
+			sourceTree = "<group>";
+		};
 		4356B39B1DB702C6005CE5EB /* MyRestaurant */ = {
 			isa = PBXGroup;
 			children = (
@@ -150,10 +159,9 @@
 				43F3E15A1DA28101002BD7B1 /* Main.storyboard */,
 				4356B39B1DB702C6005CE5EB /* MyRestaurant */,
 				4356B39C1DB702CF005CE5EB /* Details */,
-				431579631DB52ABE00DA215C /* AddRestaurantTableViewController.swift */,
+				43145D571DB77D07004E9910 /* Share&Rate */,
 				4389BDF81DACFDF200963CD4 /* MapRestaurantsLocationViewController.swift */,
-				4389BDF31DACE97500963CD4 /* ShareViewController.swift */,
-				43138DEC1DAC0D7B0059E470 /* QuickReviewViewController.swift */,
+				431579631DB52ABE00DA215C /* AddRestaurantTableViewController.swift */,
 				43F3E1841DA281F6002BD7B1 /* Supporting files */,
 			);
 			name = MyRestaurant;

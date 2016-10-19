@@ -32,6 +32,9 @@
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="v7m-3O-vCP">
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Llo-j9-sYq">
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="23" id="mho-Tq-Biz"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="18"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -94,7 +97,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G4r-mV-qhj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="356" y="140"/>
+            <point key="canvasLocation" x="633" y="52"/>
         </scene>
         <!--Details View Controller-->
         <scene sceneID="EbC-MA-Rrc">
@@ -142,7 +145,6 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="kYI-vm-hPl" firstAttribute="leading" secondItem="y9O-8f-yuP" secondAttribute="leadingMargin" constant="20" id="3Xp-fv-zGi"/>
-                                                <constraint firstItem="kYI-vm-hPl" firstAttribute="top" secondItem="y9O-8f-yuP" secondAttribute="topMargin" constant="2" id="6Es-li-a9U"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="kYI-vm-hPl" secondAttribute="bottom" constant="2" id="NEQ-1m-8hk"/>
                                                 <constraint firstItem="kYI-vm-hPl" firstAttribute="centerY" secondItem="y9O-8f-yuP" secondAttribute="centerY" id="ljB-Tr-fEN"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="kYI-vm-hPl" secondAttribute="trailing" constant="20" id="wj0-c3-kOI"/>
@@ -185,6 +187,16 @@
                                     </segue>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ydd-v6-hrs">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="YVZ-xF-WnZ"/>
+                                    <constraint firstAttribute="width" secondItem="ydd-v6-hrs" secondAttribute="height" multiplier="17:8" constant="-45" id="hxJ-RM-oKz"/>
+                                </constraints>
+                                <state key="normal" image="map"/>
+                                <connections>
+                                    <segue destination="urH-av-qFn" kind="show" id="of1-Vr-Kla"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -194,6 +206,9 @@
                             <constraint firstItem="7Vl-uA-8tm" firstAttribute="top" secondItem="sRX-Et-5BO" secondAttribute="top" id="Lhv-qf-cmq"/>
                             <constraint firstItem="t6x-hi-1F9" firstAttribute="top" secondItem="EP1-MP-QQJ" secondAttribute="bottom" constant="8" id="MT1-Rj-H9y"/>
                             <constraint firstItem="t6x-hi-1F9" firstAttribute="trailing" secondItem="sRX-Et-5BO" secondAttribute="trailingMargin" id="ShO-hg-BE6"/>
+                            <constraint firstItem="ydd-v6-hrs" firstAttribute="trailing" secondItem="sRX-Et-5BO" secondAttribute="trailingMargin" id="ilU-5E-rhW"/>
+                            <constraint firstItem="ydd-v6-hrs" firstAttribute="width" secondItem="ydd-v6-hrs" secondAttribute="height" multiplier="17:8" constant="-45" id="pFx-pP-LsX"/>
+                            <constraint firstItem="ydd-v6-hrs" firstAttribute="top" secondItem="t6x-hi-1F9" secondAttribute="bottom" constant="8" id="zfy-tC-buy"/>
                         </constraints>
                     </view>
                     <connections>
@@ -207,7 +222,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uOg-SO-QhO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1456.8" y="139.880059970015"/>
+            <point key="canvasLocation" x="1416" y="52"/>
         </scene>
         <!--Map Eateries Location View Controller-->
         <scene sceneID="5mT-II-sSp">
@@ -239,7 +254,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Zc-RM-41m" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2114" y="140"/>
+            <point key="canvasLocation" x="2105" y="52"/>
         </scene>
         <!--Share View Controller-->
         <scene sceneID="JO8-N1-Iwh">
@@ -337,7 +352,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CtA-zZ-iVv" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="5i0-FJ-oC6" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1145" y="901"/>
+            <point key="canvasLocation" x="1034" y="811"/>
         </scene>
         <!--Quick Review View Controller-->
         <scene sceneID="JkI-Ip-34m">
@@ -442,7 +457,7 @@ Did you like it?</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4r3-Js-0q8" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="Olr-DI-i8Q" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1760.8" y="900.89955022488766"/>
+            <point key="canvasLocation" x="1838" y="811"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ydG-FD-eRd">
@@ -460,7 +475,7 @@ Did you like it?</string>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gxc-S8-P5P" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-343" y="140"/>
+            <point key="canvasLocation" x="-28" y="52"/>
         </scene>
         <!--Add Restaurant Table View Controller-->
         <scene sceneID="y6A-Lp-IyN">
@@ -477,7 +492,7 @@ Did you like it?</string>
                                         <rect key="frame" x="0.0" y="64" width="375" height="240"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6PF-ba-s0k" id="yq2-uj-IVq">
-                                            <frame key="frameInset" width="375" height="239"/>
+                                            <frame key="frameInset" width="375" height="240"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="addImage" translatesAutoresizingMaskIntoConstraints="NO" id="Zba-OR-Czg">
@@ -491,7 +506,7 @@ Did you like it?</string>
                                         <rect key="frame" x="0.0" y="304" width="375" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bmH-SA-blF" id="wOW-h4-2Cv">
-                                            <frame key="frameInset" width="375" height="69"/>
+                                            <frame key="frameInset" width="375" height="70"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Restaurant name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="94f-o5-74N">
@@ -514,7 +529,7 @@ Did you like it?</string>
                                         <rect key="frame" x="0.0" y="374" width="375" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gaB-pG-Vm7" id="Iaz-SW-Uqd">
-                                            <frame key="frameInset" width="375" height="69"/>
+                                            <frame key="frameInset" width="375" height="70"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Type" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZdJ-Kh-jmr">
@@ -537,7 +552,7 @@ Did you like it?</string>
                                         <rect key="frame" x="0.0" y="444" width="375" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ew0-Wd-pEo" id="qYy-bD-vzf">
-                                            <frame key="frameInset" width="375" height="69"/>
+                                            <frame key="frameInset" width="375" height="70"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Restaurant location" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="n9a-Vj-7ox">
@@ -560,7 +575,7 @@ Did you like it?</string>
                                         <rect key="frame" x="0.0" y="514" width="375" height="75"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eF8-fP-h0k" id="zTT-Zi-szD">
-                                            <frame key="frameInset" width="375" height="74"/>
+                                            <frame key="frameInset" width="375" height="75"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Have you been there?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zhl-4o-gUw">
@@ -631,7 +646,7 @@ Did you like it?</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1GD-35-dYc" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="UOg-7a-hAN" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1798" y="-563"/>
+            <point key="canvasLocation" x="2106" y="-654"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="DCR-RX-wuj">
@@ -649,7 +664,7 @@ Did you like it?</string>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4SP-wE-J35" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1145" y="-563"/>
+            <point key="canvasLocation" x="1416" y="-653"/>
         </scene>
     </scenes>
     <resources>
@@ -660,10 +675,14 @@ Did you like it?</string>
         <image name="facebook" width="128" height="128"/>
         <image name="g" width="128" height="128"/>
         <image name="mail" width="128" height="128"/>
+        <image name="map" width="50" height="50"/>
         <image name="perfect" width="85" height="85"/>
         <image name="rating" width="170" height="170"/>
         <image name="reviewBG" width="302" height="568"/>
         <image name="soso" width="85" height="85"/>
         <image name="vk" width="128" height="128"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="of1-Vr-Kla"/>
+    </inferredMetricsTieBreakers>
 </document>
