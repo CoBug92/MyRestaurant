@@ -22,7 +22,7 @@ class MapRestaurantsLocationViewController: UIViewController, MKMapViewDelegate 
         
         //с помощью этого из текста в ширину и долготу и наоборт
         let geocoder = CLGeocoder()
-        geocoder.geocodeAddressString(restaurant.location, completionHandler: { placemarks, error in
+        geocoder.geocodeAddressString(restaurant.location!, completionHandler: { placemarks, error in
             //если ошибки = 0 то выполням код дальше
             guard error == nil else { return }
             //записываем наш опциональный массив в другой массив
@@ -61,7 +61,7 @@ class MapRestaurantsLocationViewController: UIViewController, MKMapViewDelegate 
         
         //Add image
         let leftImage = UIImageView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
-        leftImage.image = UIImage(named: restaurant.image)
+        leftImage.image = UIImage(data: restaurant.image as! Data)
         annotationView?.leftCalloutAccessoryView = leftImage
         
         //изменяем цвет иголки

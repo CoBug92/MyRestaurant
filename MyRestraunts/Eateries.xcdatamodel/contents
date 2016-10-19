@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11232" systemVersion="16A323" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="Task" representedClassName="Task" syncable="YES" codeGenerationType="class">
+    <entity name="Restaurant" representedClassName="Restaurant" syncable="YES" codeGenerationType="class">
         <attribute name="image" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
         <attribute name="location" attributeType="String" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
@@ -8,6 +8,6 @@
         <attribute name="wasVisited" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Task" positionX="-63" positionY="-18" width="128" height="120"/>
+        <element name="Restaurant" positionX="-63" positionY="-18" width="128" height="120"/>
     </elements>
 </model>

@@ -14,13 +14,6 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet var restaurantImageView: UIImageView!
     @IBOutlet weak var tableView: UITableView!
     
-    //Function responsible for send rateImage or close RatingView and ShareVIew
-    @IBAction func unwindSegue(segue: UIStoryboardSegue) {
-        guard let svc = segue.source as? QuickReviewViewController else { return }
-        guard let rating = svc.restRating else { return }
-        rateButton.setImage(UIImage(named: rating), for: .normal)
-    }
-    
     var restaurant: Restaurant?
     
     
@@ -37,7 +30,7 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
         super.viewDidLoad()
         
         //Download nacessory image
-        self.restaurantImageView.image = UIImage(named: restaurant! .image)
+        self.restaurantImageView.image = UIImage(data: restaurant?.image as! Data)
         
         //Autosizing cell
         self.tableView.estimatedRowHeight = 35                    //default height of cell (for increase capacity)
@@ -104,5 +97,19 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
             //Sent value of restaurant in this class to restaurant in Map class
             destinationVC.restaurant = restaurant
         }
+        if segue.identifier == "ShowTheMapButton" {
+            let destinationVC = segue.destination as! MapRestaurantsLocationViewController
+            //Sent value of restaurant in this class to restaurant in Map class
+            destinationVC.restaurant = restaurant
+        }
+    }
+    
+    
+    //MARK: - Action
+    //Function responsible for send rateImage or close RatingView and ShareVIew
+    @IBAction func unwindSegue(segue: UIStoryboardSegue) {
+        guard let svc = segue.source as? QuickReviewViewController else { return }
+        guard let rating = svc.restRating else { return }
+        rateButton.setImage(UIImage(named: rating), for: .normal)
     }
 }
