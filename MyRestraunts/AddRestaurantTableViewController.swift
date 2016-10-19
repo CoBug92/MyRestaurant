@@ -48,6 +48,7 @@ class AddRestaurantTableViewController: UITableViewController, UIImagePickerCont
                 imagePicker.sourceType = .photoLibrary
                 //Display view
                 self.present(imagePicker, animated: true, completion: nil)
+                
             }
         }
         
@@ -64,7 +65,6 @@ class AddRestaurantTableViewController: UITableViewController, UIImagePickerCont
         imageView.clipsToBounds = true
         //Close photoLibrary window
         dismiss(animated: true, completion: nil)
-        
     }
     
     func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
@@ -94,16 +94,16 @@ class AddRestaurantTableViewController: UITableViewController, UIImagePickerCont
             return
         }
         
-        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        let task = Task(context: context)
-        task.name = nameTextField.text!
-        task.type = typeTextField.text!
-        task.location = locationTextField.text!
-        task.image = UIImagePNGRepresentation(self.imageView.image!) as NSData?
-        task.wasVisited = wasVisited
-        //Save data to CodeData
-        (UIApplication.shared.delegate as! AppDelegate).saveContext()
-        navigationController!.popViewController(animated: true)
+        //        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        //        let oneRestaurant = Restaurant(context: context)
+        //        oneRestaurant.name = nameTextField.text!
+        //        oneRestaurant.type = typeTextField.text!
+        //        oneRestaurant.location = locationTextField.text!
+        //        oneRestaurant.image = UIImagePNGRepresentation(self.imageView.image!) as NSData?
+        //        oneRestaurant.wasVisited = wasVisited
+        //        //Save data to CodeData
+        //        (UIApplication.shared.delegate as! AppDelegate).saveContext()
+        //        navigationController!.popViewController(animated: true)
         
         performSegue(withIdentifier: "unwindBackToHomeScreen", sender: self)
         

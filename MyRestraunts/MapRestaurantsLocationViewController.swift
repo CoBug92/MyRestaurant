@@ -12,7 +12,7 @@ import MapKit
 class MapRestaurantsLocationViewController: UIViewController, MKMapViewDelegate {
     @IBOutlet weak var mapView: MKMapView!
     
-    var restaurant: Task!
+    var restaurant: Restaurant!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,7 +20,7 @@ class MapRestaurantsLocationViewController: UIViewController, MKMapViewDelegate 
         mapView.delegate = self
         
         let geocoder = CLGeocoder()
-        geocoder.geocodeAddressString(restaurant.location!, completionHandler: { placemarks, error in
+        geocoder.geocodeAddressString(restaurant.location, completionHandler: { placemarks, error in
             //compare for errors
             if error != nil{
                 print(error)
@@ -57,10 +57,10 @@ class MapRestaurantsLocationViewController: UIViewController, MKMapViewDelegate 
         
         //Add image
         let leftSideAnnotationView = UIImageView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
-            leftSideAnnotationView.image = UIImage(data: restaurant.image! as Data)
-            annotationView?.leftCalloutAccessoryView = leftSideAnnotationView
-            
-            return annotationView
+        leftSideAnnotationView.image = UIImage(named: restaurant.image)
+        annotationView?.leftCalloutAccessoryView = leftSideAnnotationView
+        
+        return annotationView
     }
     
     

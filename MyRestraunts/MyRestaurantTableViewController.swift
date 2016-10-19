@@ -11,102 +11,31 @@ import CoreData
 
 class MyRestaurantTableViewController: UITableViewController {
     
-    @IBAction func unwindBackToHomeScreen(_ segue: UIStoryboardSegue) {
-        
-    }
-    
-    var MyRestaurant: [Task] = []
-    
-    // MARK: - Table view data source
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1    //Count of sections in TableView
-    }
-    
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return MyRestaurant.count   //Count of rows in Section
-    }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! MyRestaurantTableViewCell
-        
-        //Configurate the cell:
-        //Write the value of MyRestaurant.image in thumbnailImageView
-        cell.thumbnailImageView.image = UIImage(data: MyRestaurant[indexPath.row].image! as Data)
-        //Create the round pictures
-        //The side of square is equal the diameter of circle, that why /2
-        cell.thumbnailImageView.layer.cornerRadius = cell.thumbnailImageView.frame.size.height/2
-        cell.thumbnailImageView.clipsToBounds = true    //Give access to change the ImageView
-        
-        //Writes the value of MyRestaurant.name in nameLabel
-        cell.nameLabel.text = MyRestaurant[indexPath.row].name
-        
-        //Writes the value of MyRestaurant.type in typeLabel
-        cell.typeLabel.text = MyRestaurant[indexPath.row].type
-        
-        //Writes the value of MyRestaurant.location in locationLabel
-        cell.locationLabel.text = MyRestaurant[indexPath.row].location
-        
-        cell.checkImageView.isHidden = !MyRestaurant[indexPath.row].wasVisited
-        
-        //Отмечаем галочкой посещеные рестораны
-        //        cell.accessoryType = MyRestaurant[indexPath.row].wasVisited ? .checkmark : .none //запись в тернарном виде
-        //        cell.tintColor = UIColor.black  //выбор цвета галочки
-        
-        return cell
+    @IBAction func unwindSegue(segue: UIStoryboardSegue) {
     }
     
     
-    //Function creates swipe menu with additional buttons
-    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        //Create variable which will responsible for delete button
-        let deleteAction = UITableViewRowAction(style: .default, title: "Delete") { (UITableViewRowAction, indexPath) in
-
-             let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-            let task = self.MyRestaurant[indexPath.row]
-            context.delete(task)
-            (UIApplication.shared.delegate as! AppDelegate).saveContext()
-            do {
-                self.MyRestaurant = try context.fetch(Task.fetchRequest())
-            } catch {
-                print("Fetching Failed")
-            }
-            tableView.reloadData()
-            
-//            // delete item by indexPath
-//            self.MyRestaurant.remove(at: indexPath.row)
-//            
-//            //reload table with animation
-//            tableView.deleteRows(at: [indexPath], with: .fade)
-//            //self.tableView.reloadData() //reload table without animation
-            
-        }
-        
-        //Create action menu when user clicks "Share"
-        let allShareAction = UITableViewRowAction(style: .default, title: "Share") { (UITableViewRowAction, indexPath) in
-            // Share item by indexPath
-            let allShareActionMenu = UIAlertController(title: nil, message: "Share as:", preferredStyle: .actionSheet)
-            
-            //Create constants responsible for Share buttons
-            let emailShareAction = UIAlertAction(title: "Email share", style: .default, handler: nil)
-            let facebookShareAction = UIAlertAction(title: "FaceBook share", style: .default, handler: nil)
-            let vkontakteShareAction = UIAlertAction(title: "VKontake share", style: .default, handler: nil)
-            let cancelShareAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-            
-            //Add buttons to action menu
-            allShareActionMenu.addAction(emailShareAction)
-            allShareActionMenu.addAction(facebookShareAction)
-            allShareActionMenu.addAction(vkontakteShareAction)
-            allShareActionMenu.addAction(cancelShareAction)
-            
-            //Give access to add this buttons to menu
-            self.present(allShareActionMenu, animated: true, completion: nil)
-        }
-        //Change the color of Share button
-        allShareAction.backgroundColor = UIColor(red: 63 / 255, green: 84 / 255, blue: 242 / 255, alpha: 1)
-        
-        //return 2 possible button in action menu
-        return [deleteAction, allShareAction]
-    }
+    //    var myRestaurant: [Restaurants] = []
+    //The massive responsible for Restaurant objects
+    var allRestaurant: [Restaurant] = [
+        Restaurant(name: "Barrafina", type: "Bar", image: "Barrafina", location: "10 Adelaide Street, Covent Garden, London", wasVisited: false),
+        Restaurant(name: "Bourkestreetbakery", type: "Bakery", image: "Bourkestreetbakery", location: "480 Bourke St, Melbourne VIC 3000, Australia", wasVisited: false),
+        Restaurant(name: "Deadend", type: "Cafe", image: "Cafedeadend", location: "72 Po Hing Fong, Hong Kong", wasVisited: false),
+        Restaurant(name: "Lore", type: "Cafe", image: "Cafelore", location: "4601 4th Ave, Brooklyn, NY 11220, United States", wasVisited: false),
+        Restaurant(name: "Confessional", type: "Restaurant", image: "Confessional", location: "308 E 6th St, New York, NY 10003, USA", wasVisited: false),
+        Restaurant(name: "Donostia", type: "Restaurant", image: "Donostia", location: " 10 Seymour Pl, London W1H 7ND, United Kingdom", wasVisited: false),
+        Restaurant(name: "Five Leaves", type: "Bar", image: "Fiveleaves", location: "18 Bedford Ave, Brooklyn, NY 11222, United States", wasVisited: false),
+        Restaurant(name: "For Kee", type: "Restaurant", image: "Forkeerestaurant", location: "200 Hollywood Rd, Sheung Wan, Hong Kong", wasVisited: false),
+        Restaurant(name: "Graham avenue meats", type: "Restaurant", image: "Grahamavenuemeats", location: "445 Graham Ave, Brooklyn, NY 11211, United States", wasVisited: false),
+        Restaurant(name: "Haigh's chocolate", type: "Chocolate shope", image: "Haighschocolate", location: "The Strand Arcade, 1/412-414 George St, Sydney NSW 2000, Australia", wasVisited: false),
+        Restaurant(name: "Homei", type: "Restaurant", image: "Homei", location: "Shop 8/38-52 Waterloo St, Surry Hills NSW 2010, Australia", wasVisited: false),
+        Restaurant(name: "Palomino Espresso", type: "Espresso Bar", image: "Palominoespresso", location: "1/61 York St, Sydney NSW 2000, Australia", wasVisited: false),
+        Restaurant(name: "Po's Atelier", type: "Bakery", image: "Posatelier", location: "70 Po Hing Fong, Hong Kong", wasVisited: false),
+        Restaurant(name: "Teakha", type: "Cafe", image: "Teakha", location: "18 Tai Ping Shan St, Hong Kong", wasVisited: false),
+        Restaurant(name: "Traif", type: "Restaurant", image: "Traif", location: "229 S 4th St, Brooklyn, NY 11211, United States", wasVisited: false),
+        Restaurant(name: "Upstate", type: "Seafood Restaurant", image: "Upstate", location: "95 1st Avenue, New York, NY 10003, United States", wasVisited: false),
+        Restaurant(name: "Waffle & Wolf", type: "Sandwich Shop", image: "Wafflewolf", location: "413 Graham Ave, Brooklyn, NY 11211, United States", wasVisited: false)
+    ]
     
     
     
@@ -115,7 +44,7 @@ class MyRestaurantTableViewController: UITableViewController {
         
         tableView.dataSource = self
         tableView.delegate = self
-    
+        
         //Clear unnecessary dividers
         self.tableView.tableFooterView = UIView(frame: CGRect.zero)
         
@@ -125,15 +54,89 @@ class MyRestaurantTableViewController: UITableViewController {
         //Autosizing cell
         self.tableView.estimatedRowHeight = 85                      //default height of cell (for increase capacity)
         self.tableView.rowHeight = UITableViewAutomaticDimension    //Height is calculated automatically
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        //        //get the data from coredata
+        //        getData()
+        //        //reload the tableview
+        //        tableView.reloadData()
         
         
+        //NavigationBar hides
+        self.navigationController?.hidesBarsOnSwipe = true
+    }
+    
+    
+    
+    // MARK: - Table view data source
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 1    //Count of sections in TableView
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return allRestaurant.count       //Count of rows in Section
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! MyRestaurantTableViewCell
         
+        //Configurate the cell:
+        let eateries = allRestaurant[indexPath.row]
+        //Writes the value of MyRestaurant.name in nameLabel
+        cell.nameLabel.text = eateries.name
         
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
+        //Writes the value of MyRestaurant.type in typeLabel
+        cell.typeLabel.text = eateries.type
         
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        //Writes the value of MyRestaurant.location in locationLabel
+        cell.locationLabel.text = eateries.location
+        
+        cell.checkImageView.isHidden = !eateries.wasVisited
+        
+        //Write the value of MyRestaurant.image in thumbnailImageView
+        cell.thumbnailImageView.image = UIImage(named: eateries.image)
+        //Create the round pictures
+        //The side of square is equal the diameter of circle, that why /2
+        cell.thumbnailImageView.layer.cornerRadius = cell.thumbnailImageView.frame.size.height/2
+        cell.thumbnailImageView.clipsToBounds = true    //Give access to change the ImageView
+        
+        return cell
+    }
+    
+    
+    
+    //!    //Function creates swipe menu with additional buttons
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        //Create variable which will responsible for delete button
+        //        let deleteAction = UITableViewRowAction(style: .default, title: "Delete") { (action, indexPath) in
+        //            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        //            let oneRestaurant = self.myRestaurant[indexPath.row]
+        //            context.delete(oneRestaurant)
+        //            (UIApplication.shared.delegate as! AppDelegate).saveContext()
+        //            do {
+        //                self.myRestaurant = try context.fetch(Eateries.fetchRequest())
+        //            } catch {
+        //                print("Fetching Failed")
+        //            }
+        //            tableView.reloadData()
+        //        }
+        
+        //Create action menu when user clicks "Share"
+        let share = UITableViewRowAction(style: .default, title: "Share") { (action, indexPath) in
+            // Share item by indexPath
+            let defaultText = "I am in \(self.allRestaurant[indexPath.row].name) now"
+            if let image = UIImage(named: self.allRestaurant[indexPath.row].image) {
+                let activityController = UIActivityViewController(activityItems: [defaultText, image], applicationActivities: nil)
+                self.present(activityController, animated: true, completion: nil)
+            }
+        }
+        //Change the color of Share button
+        share.backgroundColor = UIColor(red: 63 / 255, green: 84 / 255, blue: 242 / 255, alpha: 1)
+        //return 2 possible button in action menu
+        return [share]
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -141,48 +144,38 @@ class MyRestaurantTableViewController: UITableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        //get the data from coredata
-        getData()
-        //reload the tableview
-        tableView.reloadData()
-
-        
-        //NavigationBar hides
-        self.navigationController?.hidesBarsOnSwipe = true
-        self.navigationController?.setNavigationBarHidden(false, animated: true)
-    }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+    //
+    //    func getData() {
+    //        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    //        //get data
+    //        do {
+    //            MyRestaurant = try context.fetch(Restaurants.fetchRequest())
+    //        } catch {
+    //            print("Fetching Failed")
+    //        }
+    //    }
+    //
     
-    func getData() {
-        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        //get data
-        do {
-            MyRestaurant = try context.fetch(Task.fetchRequest())
-        } catch {
-            print("Fetching Failed")
-        }
-    }
-
     
     // MARK: - Navigation
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    //Сейчас будет осуществляться переход. Подготовительная функция к переходу
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "ShowDetailsSegue" {
+        if segue.identifier == "DetailsSegue" {
             if let indexPath = self.tableView.indexPathForSelectedRow{
                 let destinationVC = segue.destination as! DetailsViewController
-                destinationVC.restaurant = self.MyRestaurant[indexPath.row]
+                destinationVC.restaurant = allRestaurant[indexPath.row]
             }
         }
     }
+    
+    
+    
+    
+    //Отмечаем галочкой посещеные рестораны
+    //        cell.accessoryType = MyRestaurant[indexPath.row].wasVisited ? .checkmark : .none
+    //        cell.tintColor = UIColor.black  //выбор цвета галочки
     
     //    //The massive responsible for Restaurant objects
     //    var MyRestaurant: [Restaurant] = [
@@ -204,7 +197,7 @@ class MyRestaurantTableViewController: UITableViewController {
     //        Restaurant(name: "Upstate", type: "Seafood Restaurant", image: "Upstate", location: "95 1st Avenue, New York, NY 10003, United States", wasVisited: false),
     //        Restaurant(name: "Waffle & Wolf", type: "Sandwich Shop", image: "Wafflewolf", location: "413 Graham Ave, Brooklyn, NY 11211, United States", wasVisited: false)
     //    ]
-
+    
     
     /*
      // Override to support conditional editing of the table view.
@@ -292,14 +285,15 @@ class MyRestaurantTableViewController: UITableViewController {
     
     //Function adds the delete button in the sliding menu
     //    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-    //        self.restaurantWereVisited.remove(at: indexPath.row)
-    //        self.restaurantImage.remove(at: indexPath.row)
-    //        self.restaurantType.remove(at: indexPath.row)
-    //        self.restaurantNames.remove(at: indexPath.row)
-    //        self.restaurantLocation.remove(at: indexPath.row)
-    //
-    //        //self.tableView.reloadData() //перезагрузка таблицы без анимации
-    //        tableView.deleteRows(at: [indexPath], with: .fade)
+    //        if editingStyle == .delete {
+    //            self.restaurantWereVisited.remove(at: indexPath.row)
+    //            self.restaurantImage.remove(at: indexPath.row)
+    //            self.restaurantType.remove(at: indexPath.row)
+    //            self.restaurantNames.remove(at: indexPath.row)
+    //            self.restaurantLocation.remove(at: indexPath.row)
+    //        }
+    //        self.tableView.reloadData() //перезагрузка таблицы без анимации
+    //        tableView.deleteRows(at: [indexPath], with: .fade) //перезагрузка таблицы c анимацией
     //    }
     
 }

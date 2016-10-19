@@ -9,51 +9,58 @@
 import UIKit
 
 class QuickReviewViewController: UIViewController {
-
-    @IBOutlet weak var backgroundImageView: UIImageView!
-    @IBOutlet weak var windowView: UIView!
     
+    
+    @IBOutlet weak var windowView: UIView!
+    @IBOutlet weak var badButton: UIButton!
+    @IBOutlet weak var sosoButton: UIButton!
+    @IBOutlet weak var perfectButton: UIButton!
+    
+    var restRating: String?
+    
+    @IBAction func rateEateries (sender: UIButton) {
+        switch sender.tag  {
+        case 0:
+            restRating = "bad"
+        case 1:
+            restRating = "soso"
+        case 2:
+            restRating = "perfect"
+        default:
+            break
+        }
+        performSegue(withIdentifier: "unwindSequeToDVC", sender: sender)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        
+        
         //Create darkBlurEffect
         let darkBlurEffect = UIBlurEffect(style: UIBlurEffectStyle.dark)
         let darkBlurEffectView = UIVisualEffectView(effect: darkBlurEffect)
-        darkBlurEffectView.frame = view.bounds
-        backgroundImageView.addSubview(darkBlurEffectView)
+        darkBlurEffectView.frame = self.view.bounds
+        darkBlurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        self.view.insertSubview(darkBlurEffectView, at: 1)
         
         //Create animation for rating
-        let scaleAnimation = CGAffineTransform(translationX: 0, y: 600)
-        let translationAnimation = CGAffineTransform(scaleX: 0.0, y: 0.0)
-        self.windowView.transform =  translationAnimation.concatenating(scaleAnimation)
-
+        badButton.transform = CGAffineTransform(scaleX: 0, y: 0)
+        sosoButton.transform = CGAffineTransform(scaleX: 0, y: 0)
+        perfectButton.transform = CGAffineTransform(scaleX: 0, y: 0)
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         
         //Create animation for rating
-        UIView.animate(withDuration: 0.7, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .allowAnimatedContent, animations: {
-            let scaleAnimation = CGAffineTransform(scaleX: 1.0, y: 1.0)
-            let translationAnimation = CGAffineTransform(translationX: 0, y: 0)
-            self.windowView.transform = scaleAnimation.concatenating(translationAnimation)
-            } , completion: nil)
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        let buttonArray = [badButton, sosoButton, perfectButton]
+        for (index, button) in buttonArray.enumerated() {
+            let delay = Double(index) * 0.2
+            UIView.animate(withDuration: 0.6, delay: delay, usingSpringWithDamping: 0.5, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
+                button?.transform = CGAffineTransform(scaleX: 1, y: 1)
+                }, completion: nil)
+        }
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
