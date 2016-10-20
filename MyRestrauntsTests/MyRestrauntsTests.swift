@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import MyRestraunts
+//@testable import MyRestraunts
 
 class MyRestrauntsTests: XCTestCase {
     

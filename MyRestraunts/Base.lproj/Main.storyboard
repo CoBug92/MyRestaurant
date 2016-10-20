@@ -22,7 +22,7 @@
                                 <rect key="frame" x="0.0" y="92" width="375" height="85"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bza-fO-K3r" id="lTb-Hb-1jz">
-                                    <frame key="frameInset" width="375" height="84"/>
+                                    <frame key="frameInset" width="375" height="85"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zwr-xQ-ela">
@@ -31,7 +31,7 @@
                                         </imageView>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="v7m-3O-vCP">
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Llo-j9-sYq">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Llo-j9-sYq">
                                                     <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="18"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -52,7 +52,6 @@
                                                 <constraint firstAttribute="trailing" secondItem="Llo-j9-sYq" secondAttribute="trailing" id="ECe-CL-2l6"/>
                                                 <constraint firstItem="Llo-j9-sYq" firstAttribute="leading" secondItem="v7m-3O-vCP" secondAttribute="leading" id="JmL-yt-sk8"/>
                                                 <constraint firstItem="Llo-j9-sYq" firstAttribute="top" secondItem="v7m-3O-vCP" secondAttribute="top" id="LZ7-UH-hgE"/>
-                                                <constraint firstAttribute="bottom" secondItem="3lu-mq-dpC" secondAttribute="bottom" id="OX2-bP-iiV"/>
                                                 <constraint firstAttribute="trailing" secondItem="3lu-mq-dpC" secondAttribute="trailing" id="ZGP-NJ-h6g"/>
                                                 <constraint firstAttribute="trailing" secondItem="Hsd-69-Zhm" secondAttribute="trailing" id="ayl-EB-7C8"/>
                                                 <constraint firstItem="Hsd-69-Zhm" firstAttribute="top" secondItem="Llo-j9-sYq" secondAttribute="bottom" id="kw7-qP-pKK"/>
@@ -129,7 +128,7 @@
                                         <rect key="frame" x="0.0" y="392" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eZP-jI-uLm" id="y9O-8f-yuP">
-                                            <frame key="frameInset" width="375" height="43"/>
+                                            <frame key="frameInset" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kYI-vm-hPl">
@@ -514,7 +513,7 @@ Did you like it?</string>
                                         <rect key="frame" x="0.0" y="304" width="375" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bmH-SA-blF" id="wOW-h4-2Cv">
-                                            <frame key="frameInset" width="375" height="69"/>
+                                            <frame key="frameInset" width="375" height="70"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Restaurant name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="94f-o5-74N">
