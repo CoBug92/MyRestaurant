@@ -18,7 +18,7 @@ class PageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.dataSource = self
+//        self.dataSource = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -42,13 +42,13 @@ class PageViewController: UIViewController {
 
 extension PageViewController: UIPageViewControllerDataSource {
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        var index = (viewController as! ContentViewController)?.index
+        var index = (viewController as! ContentViewController).index
         index -= 1
         return displayViewController(atIndex: index)
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        var index = (viewController as! ContentViewController)?.index
+        var index = (viewController as! ContentViewController).index
         index += 1
         return displayViewController(atIndex: index)
     }

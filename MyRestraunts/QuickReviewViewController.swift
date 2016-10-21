@@ -17,6 +17,7 @@ class QuickReviewViewController: UIViewController {
     
     var restRating: String?
     
+    var restaurant: Restaurant?
     
     
     override func viewDidLoad() {
@@ -36,7 +37,6 @@ class QuickReviewViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        
         //Create animation for markButtons
         let buttonArray = [badButton, sosoButton, perfectButton]
         for (index, button) in buttonArray.enumerated() {
@@ -49,7 +49,7 @@ class QuickReviewViewController: UIViewController {
     
     
     
-    //MARK: -Action
+    //MARK: - Action
     @IBAction func rateEateries (sender: UIButton) {
         switch sender.tag  {
         case 0:

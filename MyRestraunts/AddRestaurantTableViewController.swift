@@ -10,6 +10,10 @@ import UIKit
 
 class AddRestaurantTableViewController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
+    @IBOutlet weak var locationErrorLabel: UILabel!
+    @IBOutlet weak var typeErrorLabel: UILabel!
+    @IBOutlet weak var nameErrorLabel: UILabel!
+    
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var typeTextField: UITextField!
@@ -26,7 +30,6 @@ class AddRestaurantTableViewController: UITableViewController, UIImagePickerCont
         //Buttons color
         yesButton.backgroundColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
         noButton.backgroundColor = #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)
-        
     }
     
     
@@ -85,40 +88,59 @@ class AddRestaurantTableViewController: UITableViewController, UIImagePickerCont
         dismiss(animated: true, completion: nil)
     }
     
+    //Function check filling textField
+    func checkFillingTextField() -> Int {
+        var error = 0
+        //Check that all textFields are not empty
+        if nameTextField.text == "" {
+            nameErrorLabel.isHidden = false
+            error += 1
+        } else {
+            nameErrorLabel.isHidden = true
+        }
+        if typeTextField.text == "" {
+            typeErrorLabel.isHidden = false
+            error += 1
+        } else {
+            typeErrorLabel.isHidden = true
+        }
+        if locationTextField.text == "" {
+            locationErrorLabel.isHidden = false
+            error += 1
+        } else {
+            locationErrorLabel.isHidden = true
+        }
+        return error
+    }
+    
     
     
     //MARK: - Actions
     @IBAction func saveRestaurant() {
-        //Check that all textFields are not empty
-        if nameTextField.text == nil || typeTextField.text == nil || locationTextField.text == nil {
-            let alertController = UIAlertController(title: "Ups!", message: "You haven't filled field", preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil)
-            //Add action
-            alertController.addAction(okAction)
-            //Create action view
-            self.present(alertController, animated: true, completion: nil)
-        } else {
-            //добираемся до контекста с которым будем работать
+        //get error value
+        let error = checkFillingTextField()
+        if error == 0 {
+            //get context with whom we will work
             if let context = (UIApplication.shared.delegate as? AppDelegate)?.coreDataStack.persistentContainer.viewContext {
-                //создаем экземпляр нашего класса в нашем контексте
+                //create cope our class in the context
                 let restaurant = Restaurant(context: context)
-                //устанавливаем все свойства
+                //Add all value in a Restaurant
                 restaurant.name = nameTextField.text
                 restaurant.type = typeTextField.text
                 restaurant.location = locationTextField.text
                 restaurant.wasVisited = wasVisited
                 if let image = imageView.image {
-                    // as we expect to get binary data so we cast to NSData
+                    // As we expect to get binary data so we cast to NSData
                     restaurant.image = UIImagePNGRepresentation(image) as NSData?
                 }
                 //Save context
                 do {
                     try context.save()
-                    print("Data was been saved")
                 } catch let error as NSError {
                     print("Couldn't save data \(error), \(error.userInfo)")
                 }
             }
+            //Return to main page
             performSegue(withIdentifier: "unwindSequeFromAddRestaurant", sender: self)
         }
     }

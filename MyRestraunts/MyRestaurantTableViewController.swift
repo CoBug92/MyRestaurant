@@ -14,50 +14,42 @@ class MyRestaurantTableViewController: UITableViewController, NSFetchedResultsCo
     @IBAction func unwindSegue(segue: UIStoryboardSegue) {
     }
     
-    
     var restaurants: [Restaurant] = []
     var searchController: UISearchController!
     var filterResultArray: [Restaurant] = []
     var fetchResultsController: NSFetchedResultsController<Restaurant>!
     
     
-    //метод для отфильтровки результатов для filterResultArray
-    func filterContentSearch(searchText text: String){
-        filterResultArray = restaurants.filter{ (restaurant) ->Bool in
-            return (restaurant.name?.lowercased().contains(text.lowercased()))!
-        }
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //работа с поиском
-        searchController = UISearchController(searchResultsController: nil) //nil чтобы найденные рестораны перекрывали общий список
+        //Work with searchBar
+        searchController = UISearchController(searchResultsController: nil) //Nil because we want that point of entry blocked main list
         searchController.searchResultsUpdater = self
         searchController.searchBar.delegate = self
-        searchController.dimsBackgroundDuringPresentation = false //если true то контроллер затемняется
-        tableView.tableHeaderView = searchController.searchBar  //в хедер вставляем серчБар
-        definesPresentationContext = true //чтобы серчБар не переходил на ДетейлВью
+        searchController.dimsBackgroundDuringPresentation = false //if true the controller dims
+        tableView.tableHeaderView = searchController.searchBar  //SearchBar located in the header of table
+        definesPresentationContext = true //SearchBar works only on the mainPage (doesn't save in detailView)
         
-        //создаем запрос
+        //Create query
         let fetchRequest: NSFetchRequest<Restaurant> = Restaurant.fetchRequest()
-        //создаем дискриптор
+        //Create descriptor
         let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
-        //для получения данных
+        //For getting data
         fetchRequest.sortDescriptors = [sortDescriptor]
-        //создаем контекст
+        //Create context
         if let context = (UIApplication.shared.delegate as? AppDelegate)?.coreDataStack.persistentContainer.viewContext {
-            //инициализируем fetchResultsController
             fetchResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
             fetchResultsController.delegate = self
-            //пытаемся получить данные
+            //try to take data
             do {
                 try fetchResultsController.performFetch()
-                //полученные данные записываем в restaurants
+                //all data write in restaurants
                 restaurants = fetchResultsController.fetchedObjects!
             } catch let error as NSError {
                 print("Couldn't save data \(error.localizedDescription)")
             }
+            //reload table
             tableView.reloadData()
         }
         
@@ -81,31 +73,6 @@ class MyRestaurantTableViewController: UITableViewController, NSFetchedResultsCo
     
     
     
-    //MARK: - Fetch results controller delegate
-    //вызывается перед тем как контроллер поменяет свой контент
-    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        tableView.beginUpdates()
-    }
-    
-    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-        switch type {
-        case .insert: guard let indexPath = newIndexPath else { break }
-        tableView.insertRows(at: [indexPath], with: .fade)
-        case .delete: guard let indexPath = indexPath else { break }
-        tableView.deleteRows(at: [indexPath], with: .fade)
-        case .update: guard let indexPath = indexPath else { break }
-        tableView.reloadRows(at: [indexPath], with: .fade)
-        default: tableView.reloadData()
-        }
-        restaurants = controller.fetchedObjects as! [Restaurant]
-    }
-    
-    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        tableView.endUpdates()
-    }
-    
-    
-    
     // MARK: - Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1    //Count of sections in TableView
@@ -119,45 +86,27 @@ class MyRestaurantTableViewController: UITableViewController, NSFetchedResultsCo
         }
     }
     
-    func restaurantToDisplayAt(indexPath: IndexPath) -> Restaurant{
-        let restaurant: Restaurant
-        if searchController.isActive && searchController.searchBar.text != "" {
-            restaurant = filterResultArray[indexPath.row]
-        } else {
-            restaurant = restaurants[indexPath.row]
-        }
-        return restaurant
-    }
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! MyRestaurantTableViewCell
         let restaurant = restaurantToDisplayAt(indexPath: indexPath)
-        
         //Configurate the cell:
         //Writes the value of MyRestaurant.name in nameLabel
         cell.nameLabel.text = restaurant.name
-        
         //Writes the value of MyRestaurant.type in typeLabel
         cell.typeLabel.text = restaurant.type
-        
         //Writes the value of MyRestaurant.location in locationLabel
         cell.locationLabel.text = restaurant.location
-        
         cell.checkImageView.isHidden = !restaurant.wasVisited
-        
         //Write the value of MyRestaurant.image in thumbnailImageView
         cell.thumbnailImageView.image = UIImage(data: restaurant .image as! Data)
         //Create the round pictures
         //The side of square is equal the diameter of circle, that why /2
         cell.thumbnailImageView.layer.cornerRadius = cell.thumbnailImageView.frame.size.height/2
         cell.thumbnailImageView.clipsToBounds = true    //Give access to change the ImageView
-        
         return cell
     }
     
-    
-    
-    //!    //Function creates swipe menu with additional buttons
+    //Function creates swipe menu with additional buttons
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         //Create variable which will responsible for delete button
         let deleteAction = UITableViewRowAction(style: .default, title: "Delete") { (action, indexPath) in
@@ -190,6 +139,51 @@ class MyRestaurantTableViewController: UITableViewController, NSFetchedResultsCo
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //Delete selecting of row
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    
+    
+    //MARK: - Fetch results controller delegate
+    //вызывается перед тем как контроллер поменяет свой контент
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.beginUpdates()
+    }
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        switch type {
+        case .insert: guard let indexPath = newIndexPath else { break }
+        tableView.insertRows(at: [indexPath], with: .fade)
+        case .delete: guard let indexPath = indexPath else { break }
+        tableView.deleteRows(at: [indexPath], with: .fade)
+        case .update: guard let indexPath = indexPath else { break }
+        tableView.reloadRows(at: [indexPath], with: .fade)
+        default: tableView.reloadData()
+        }
+        restaurants = controller.fetchedObjects as! [Restaurant]
+    }
+    
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.endUpdates()
+    }
+    
+    
+    
+    //MARK: - Functions
+    //метод для отфильтровки результатов для filterResultArray
+    func filterContentSearch(searchText text: String){
+        filterResultArray = restaurants.filter{ (restaurant) ->Bool in
+            return (restaurant.name?.lowercased().contains(text.lowercased()))!
+        }
+    }
+    
+    func restaurantToDisplayAt(indexPath: IndexPath) -> Restaurant{
+        let restaurant: Restaurant
+        if searchController.isActive && searchController.searchBar.text != "" {
+            restaurant = filterResultArray[indexPath.row]
+        } else {
+            restaurant = restaurants[indexPath.row]
+        }
+        return restaurant
     }
     
     
