@@ -23,7 +23,7 @@ class AddRestaurantTableViewController: UITableViewController, UIImagePickerCont
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //Colors of buttons
+        //Buttons color
         yesButton.backgroundColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
         noButton.backgroundColor = #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)
         
@@ -33,10 +33,11 @@ class AddRestaurantTableViewController: UITableViewController, UIImagePickerCont
     
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //Check row which user will tap if it ImageRow
+        //Iteration which describe action when user touch photo row
         if indexPath.row == 0 {
-            
+            //Create alertController which show possible action
             let allertController = UIAlertController(title: "Choose right action", message: nil, preferredStyle: .actionSheet)
+            //Create possible action
             let cancelAction = UIAlertAction(title: "Camera", style: .default, handler: {(action) in
                 self.chooseImagePickerAction(source: .camera)
             })
@@ -44,22 +45,28 @@ class AddRestaurantTableViewController: UITableViewController, UIImagePickerCont
                 self.chooseImagePickerAction(source: .photoLibrary)
             })
             let cameraAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            //Add all action in the actionSheet
             allertController.addAction(cameraAction)
             allertController.addAction(photoLibraryAction)
             allertController.addAction(cancelAction)
+            //Present alertController
             self.present(allertController, animated: true, completion: nil)
         }
+        //Delete highlighting of rows when user touched
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
+    
+    
+    //MARK: - Functions
     func chooseImagePickerAction(source: UIImagePickerControllerSourceType) {
-        //Check access to photoLibrary or to Camera
+        //Check access to a photoLibrary and a Camera
         if UIImagePickerController.isSourceTypeAvailable(source){
             let imagePicker = UIImagePickerController()
             imagePicker.delegate = self
             //Editing photo is availible
             imagePicker.allowsEditing = true
-            //Choose photo or take photo
+            //Choose photo or take a photo
             imagePicker.sourceType = source
             //Display view
             self.present(imagePicker, animated: true, completion: nil)
@@ -68,23 +75,23 @@ class AddRestaurantTableViewController: UITableViewController, UIImagePickerCont
     
     //function for choosing image from photoLibrary
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        //Create array with photo
+        //Create an array with photos
         imageView.image = info[UIImagePickerControllerEditedImage] as? UIImage
-        //how we input image
+        //How we input an image
         imageView.contentMode = .scaleAspectFill
-        //Give access to change image
+        //Give access to change an image
         imageView.clipsToBounds = true
-        //Close photoLibrary window
+        //Close photoLibrary's window
         dismiss(animated: true, completion: nil)
     }
     
     
     
-    //MARK: - Action
+    //MARK: - Actions
     @IBAction func saveRestaurant() {
         //Check that all textFields are not empty
         if nameTextField.text == nil || typeTextField.text == nil || locationTextField.text == nil {
-            let alertController = UIAlertController(title: "Ups!", message: "You hasn't filled field", preferredStyle: .alert)
+            let alertController = UIAlertController(title: "Ups!", message: "You haven't filled field", preferredStyle: .alert)
             let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil)
             //Add action
             alertController.addAction(okAction)
