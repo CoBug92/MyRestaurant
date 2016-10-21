@@ -16,21 +16,28 @@ class MyRestaurantTableViewController: UITableViewController, NSFetchedResultsCo
     
     
     var restaurants: [Restaurant] = []
+    var searchController: UISearchController!
+    var filterResultArray: [Restaurant] = []
     var fetchResultsController: NSFetchedResultsController<Restaurant>!
     
+    
+    //метод для отфильтровки результатов для filterResultArray
+    func filterContentSearch(searchText text: String){
+        filterResultArray = restaurants.filter{ (restaurant) ->Bool in
+            return (restaurant.name?.lowercased().contains(text.lowercased()))!
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //Clear unnecessary dividers
-        self.tableView.tableFooterView = UIView(frame: CGRect.zero)
-        
-        //Change the interface of BACK button
-        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.plain, target: nil, action: nil)
-        
-        //Autosizing cell
-        self.tableView.estimatedRowHeight = 85                      //default height of cell (for increase capacity)
-        self.tableView.rowHeight = UITableViewAutomaticDimension    //Height is calculated automatically
+        //работа с поиском
+        searchController = UISearchController(searchResultsController: nil) //nil чтобы найденные рестораны перекрывали общий список
+        searchController.searchResultsUpdater = self
+        searchController.searchBar.delegate = self
+        searchController.dimsBackgroundDuringPresentation = false //если true то контроллер затемняется
+        tableView.tableHeaderView = searchController.searchBar  //в хедер вставляем серчБар
+        definesPresentationContext = true //чтобы серчБар не переходил на ДетейлВью
         
         //создаем запрос
         let fetchRequest: NSFetchRequest<Restaurant> = Restaurant.fetchRequest()
@@ -53,11 +60,21 @@ class MyRestaurantTableViewController: UITableViewController, NSFetchedResultsCo
             }
             tableView.reloadData()
         }
+        
+        //Clear unnecessary dividers
+        self.tableView.tableFooterView = UIView(frame: CGRect.zero)
+        
+        //Change the interface of BACK button
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.plain, target: nil, action: nil)
+        
+        //Autosizing cell
+        self.tableView.estimatedRowHeight = 85                      //default height of cell (for increase capacity)
+        self.tableView.rowHeight = UITableViewAutomaticDimension    //Height is calculated automatically
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        self.searchController.hidesNavigationBarDuringPresentation = false
         //NavigationBar hides
         self.navigationController?.hidesBarsOnSwipe = true
     }
@@ -95,27 +112,41 @@ class MyRestaurantTableViewController: UITableViewController, NSFetchedResultsCo
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return restaurants.count       //Count of rows in Section
+        if searchController.isActive && searchController.searchBar.text != "" {
+            return filterResultArray.count
+        } else {
+            return restaurants.count       //Count of rows in Section
+        }
+    }
+    
+    func restaurantToDisplayAt(indexPath: IndexPath) -> Restaurant{
+        let restaurant: Restaurant
+        if searchController.isActive && searchController.searchBar.text != "" {
+            restaurant = filterResultArray[indexPath.row]
+        } else {
+            restaurant = restaurants[indexPath.row]
+        }
+        return restaurant
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! MyRestaurantTableViewCell
+        let restaurant = restaurantToDisplayAt(indexPath: indexPath)
         
         //Configurate the cell:
-        let eateries = restaurants[indexPath.row]
         //Writes the value of MyRestaurant.name in nameLabel
-        cell.nameLabel.text = eateries.name
+        cell.nameLabel.text = restaurant.name
         
         //Writes the value of MyRestaurant.type in typeLabel
-        cell.typeLabel.text = eateries.type
+        cell.typeLabel.text = restaurant.type
         
         //Writes the value of MyRestaurant.location in locationLabel
-        cell.locationLabel.text = eateries.location
+        cell.locationLabel.text = restaurant.location
         
-        cell.checkImageView.isHidden = !eateries.wasVisited
+        cell.checkImageView.isHidden = !restaurant.wasVisited
         
         //Write the value of MyRestaurant.image in thumbnailImageView
-        cell.thumbnailImageView.image = UIImage(data: eateries.image as! Data)
+        cell.thumbnailImageView.image = UIImage(data: restaurant .image as! Data)
         //Create the round pictures
         //The side of square is equal the diameter of circle, that why /2
         cell.thumbnailImageView.layer.cornerRadius = cell.thumbnailImageView.frame.size.height/2
@@ -148,7 +179,7 @@ class MyRestaurantTableViewController: UITableViewController, NSFetchedResultsCo
             if let image = UIImage(data: self.restaurants[indexPath.row].image as! Data) {
                 let activityController = UIActivityViewController(activityItems: [defaultText, image], applicationActivities: nil)
                 self.present(activityController, animated: true, completion: nil)
-            } 
+            }
         }
         //Change the color of Share button
         shareAction.backgroundColor = UIColor(red: 63 / 255, green: 84 / 255, blue: 242 / 255, alpha: 1)
@@ -168,17 +199,10 @@ class MyRestaurantTableViewController: UITableViewController, NSFetchedResultsCo
         if segue.identifier == "DetailsSegue" {
             if let indexPath = self.tableView.indexPathForSelectedRow{
                 let destinationVC = segue.destination as! DetailsViewController
-                destinationVC.restaurant = restaurants[indexPath.row]
+                destinationVC.restaurant = restaurantToDisplayAt(indexPath: indexPath)
             }
         }
     }
-    
-    
-    
-    
-    //Отмечаем галочкой посещеные рестораны
-    //        cell.accessoryType = MyRestaurant[indexPath.row].wasVisited ? .checkmark : .none
-    //        cell.tintColor = UIColor.black  //выбор цвета галочки
     
     //    //The massive responsible for Restaurant objects
     //    var MyRestaurant: [Restaurant] = [
@@ -200,103 +224,23 @@ class MyRestaurantTableViewController: UITableViewController, NSFetchedResultsCo
     //        Restaurant(name: "Upstate", type: "Seafood Restaurant", image: "Upstate", location: "95 1st Avenue, New York, NY 10003, United States", wasVisited: false),
     //        Restaurant(name: "Waffle & Wolf", type: "Sandwich Shop", image: "Wafflewolf", location: "413 Graham Ave, Brooklyn, NY 11211, United States", wasVisited: false)
     //    ]
-    
-    
-    /*
-     // Override to support conditional editing of the table view.
-     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-     // Return false if you do not want the specified item to be editable.
-     return true
-     }
-     */
-    
-    /*
-     // Override to support editing the table view.
-     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-     if editingStyle == .delete {
-     // Delete the row from the data source
-     tableView.deleteRows(at: [indexPath], with: .fade)
-     } else if editingStyle == .insert {
-     // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-     }
-     }
-     */
-    
-    /*
-     // Override to support rearranging the table view.
-     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-     
-     }
-     */
-    
-    /*
-     // Override to support conditional rearranging of the table view.
-     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-     // Return false if you do not want the item to be re-orderable.
-     return true
-     }
-     */
-    
-    
-    //    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    //        //Контроллер возможных действий:
-    //        //создание view который появляется внизу с выбором действий, которые мы задали ниже
-    //        let actionMenu = UIAlertController(title: nil, message: "What we need do?", preferredStyle: UIAlertControllerStyle.actionSheet)
-    //
-    //        //Создаем действия для контроллера
-    //        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil) //Объявляем  кнопку cancel
-    //        actionMenu.addAction(cancelAction)    //Добавляем в окошко кнопку cancel
-    //
-    //        //действия отвечающее за отметку о посещяемости и ее отмене
-    //        let iHaveBeenThereAction = UIAlertAction(title: "I have been there", style: .default, handler: {(action: UIAlertAction!) -> Void in
-    //            let cell = tableView.cellForRow(at: indexPath)
-    //            cell?.accessoryType = .checkmark    //отмечаем галочкой
-    //            self.restrauntsWereVisited[indexPath.count] = true  //заносим в массив значение false
-    //        })
-    //        let iHaveNeverBeenThereAction = UIAlertAction(title: "I have never been there", style: .default, handler: {(action: UIAlertAction!) -> Void in
-    //            let cell = tableView.cellForRow(at: indexPath)
-    //            cell?.accessoryType = .none    //отмечаем галочкой
-    //            self.restrauntsWereVisited[indexPath.count] = false //заносим в массив значение false
-    //        })
-    //        let cell = tableView.cellForRow(at: indexPath)
-    //        if cell?.accessoryType == .checkmark {
-    //            actionMenu.addAction(iHaveNeverBeenThereAction)
-    //        } else {
-    //            actionMenu.addAction(iHaveBeenThereAction)
-    //        }
-    //
-    //        //при нажатии на клавишу открывается Alert окно
-    //        let callActionHandler = {(action: UIAlertAction!) -> Void in
-    //            let warningMessage = UIAlertController(title: "The service doesn't work", message: "In this moment the ring cannot be complited", preferredStyle: .alert)
-    //            let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-    //            warningMessage.addAction(okAction)
-    //
-    //            self.present(warningMessage, animated: true  , completion: nil)
-    //        }
-    //        let callAction = UIAlertAction(title: "Ring", style: .default, handler: callActionHandler)
-    //        actionMenu.addAction(callAction) //Добавляем в окошко кнопку Ring
-    //
-    //        tableView.deselectRow(at: indexPath, animated: true)    //Чтобы нажатая ячейка не оставалась выделенной
-    //
-    //        self.present(actionMenu,animated: true, completion: nil)
-    //    }
-    
-    //    //Hide the TopBar
-    //    override var prefersStatusBarHidden: Bool{
-    //        return true
-    //    }
-    
-    //Function adds the delete button in the sliding menu
-    //    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-    //        if editingStyle == .delete {
-    //            self.restaurantWereVisited.remove(at: indexPath.row)
-    //            self.restaurantImage.remove(at: indexPath.row)
-    //            self.restaurantType.remove(at: indexPath.row)
-    //            self.restaurantNames.remove(at: indexPath.row)
-    //            self.restaurantLocation.remove(at: indexPath.row)
-    //        }
-    //        self.tableView.reloadData() //перезагрузка таблицы без анимации
-    //        tableView.deleteRows(at: [indexPath], with: .fade) //перезагрузка таблицы c анимацией
-    //    }
-    
+}
+
+extension MyRestaurantTableViewController: UISearchResultsUpdating {
+    //метод автоматически срабатывает когда мы что либо меняем в поисковой строке
+    func updateSearchResults(for searchController: UISearchController) {
+        filterContentSearch(searchText: searchController.searchBar.text!)
+        tableView.reloadData()
+    }
+}
+
+extension MyRestaurantTableViewController: UISearchBarDelegate {
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        if searchBar.text == "" {
+            navigationController?.hidesBarsOnSwipe = false
+        }
+        func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+            navigationController?.hidesBarsOnSwipe = true
+        }
+    }
 }
