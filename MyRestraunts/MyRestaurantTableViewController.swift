@@ -71,6 +71,16 @@ class MyRestaurantTableViewController: UITableViewController, NSFetchedResultsCo
         self.navigationController?.hidesBarsOnSwipe = true
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        //Вызов PageViewController по его идентификатору
+        if let PageViewController = storyboard?.instantiateViewController(withIdentifier: "pageViewController") as? PageViewController {
+            //отображаем контроллер
+            present(PageViewController, animated: true, completion: nil)
+        }
+        
+    }
+    
     
     
     // MARK: - Table view data source

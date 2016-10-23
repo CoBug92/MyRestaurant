@@ -138,8 +138,8 @@
 		43A712E01DBA511D0039D3E1 /* Pages */ = {
 			isa = PBXGroup;
 			children = (
-				43A712DE1DBA50F80039D3E1 /* ContentViewController.swift */,
 				43A712E11DBA51380039D3E1 /* PageViewController.swift */,
+				43A712DE1DBA50F80039D3E1 /* ContentViewController.swift */,
 			);
 			name = Pages;
 			sourceTree = "<group>";
