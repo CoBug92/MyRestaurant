@@ -17,8 +17,11 @@ class PageViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-//        self.dataSource = self
+        
+        dataSource = self
+        if let firstVC = displayViewController(atIndex: 0){
+            
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -31,6 +34,7 @@ class PageViewController: UIViewController {
         guard index < headerArray.count else { return nil }
         guard let contentVC = storyboard?.instantiateViewController(withIdentifier: "contentViewController") as? ContentViewController else { return nil }
         
+        //Присваиваем значения контенту котроллера
         contentVC.imageFile = imagesArray[index]
         contentVC.header = headerArray[index]
         contentVC.subheader = subheaderArray[index]
@@ -40,6 +44,7 @@ class PageViewController: UIViewController {
     }
 }
 
+//предоставляет метод для того чтобы контроллер знал откуда брать данные
 extension PageViewController: UIPageViewControllerDataSource {
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         var index = (viewController as! ContentViewController).index

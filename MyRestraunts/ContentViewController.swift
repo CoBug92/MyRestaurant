@@ -17,7 +17,7 @@ class ContentViewController: UIViewController {
     var header = ""
     var subheader = ""
     var imageFile = ""
-    var index = 0
+    var index = 0   //нужен для обращения к 1 котроллеру и загрузку информации
     
     
     override func viewDidLoad() {

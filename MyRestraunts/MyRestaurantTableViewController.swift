@@ -15,8 +15,8 @@ class MyRestaurantTableViewController: UITableViewController, NSFetchedResultsCo
     }
     
     var restaurants: [Restaurant] = []
-    var searchController: UISearchController!
-    var filterResultArray: [Restaurant] = []
+    var searchController: UISearchController! //Объект который занимается поиском
+    var filterResultArray: [Restaurant] = [] //массив в который будет помещаться все результаты которые удовлетворяют поиску
     var fetchResultsController: NSFetchedResultsController<Restaurant>!
     
     
@@ -25,7 +25,7 @@ class MyRestaurantTableViewController: UITableViewController, NSFetchedResultsCo
         super.viewDidLoad()
         //Work with searchBar
         searchController = UISearchController(searchResultsController: nil) //Nil because we want that point of entry blocked main list
-        searchController.searchResultsUpdater = self
+        searchController.searchResultsUpdater = self    //какой котроллер будет обновлять результаты
         searchController.searchBar.delegate = self
         searchController.dimsBackgroundDuringPresentation = false //if true the controller dims
         tableView.tableHeaderView = searchController.searchBar  //SearchBar located in the header of table
@@ -171,7 +171,8 @@ class MyRestaurantTableViewController: UITableViewController, NSFetchedResultsCo
     //MARK: - Functions
     //метод для отфильтровки результатов для filterResultArray
     func filterContentSearch(searchText text: String){
-        filterResultArray = restaurants.filter{ (restaurant) ->Bool in
+        filterResultArray = restaurants.filter{ (restaurant) -> Bool in
+            //в наш массив попадают элементы restaurant с маленькой буквы
             return (restaurant.name?.lowercased().contains(text.lowercased()))!
         }
     }
@@ -224,17 +225,19 @@ extension MyRestaurantTableViewController: UISearchResultsUpdating {
     //метод автоматически срабатывает когда мы что либо меняем в поисковой строке
     func updateSearchResults(for searchController: UISearchController) {
         filterContentSearch(searchText: searchController.searchBar.text!)
-        tableView.reloadData()
+        tableView.reloadData() //заново срабатывае cellForRowAtIndexPath
     }
 }
 
 extension MyRestaurantTableViewController: UISearchBarDelegate {
+    //когда мы щелкнули на поисковую строку
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         if searchBar.text == "" {
             navigationController?.hidesBarsOnSwipe = false
         }
-        func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-            navigationController?.hidesBarsOnSwipe = true
-        }
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        navigationController?.hidesBarsOnSwipe = true
     }
 }

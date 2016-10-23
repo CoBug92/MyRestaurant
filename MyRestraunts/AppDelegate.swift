@@ -21,6 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //Change the color of statusBar
         UIApplication.shared.statusBarStyle = UIStatusBarStyle.lightContent
         
+        
+        
         //Change the color of a navigationBar
         UINavigationBar.appearance().barTintColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
         //Change the Font
@@ -30,11 +32,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //Change the color of link in a navigatonBar
         UINavigationBar.appearance().tintColor = UIColor.white
         
+        
+        
         let statusBarView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: 20))
         //при скрытии верхних баров остает зеленая полоска статус бара
         statusBarView.backgroundColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
+        //устанавливаем наш статусБарВью в качестве сабВью на 1 позицию
         self.window?.rootViewController?.view.insertSubview(statusBarView, at: 1)
 //        UISearchBar.appearance().barTintColor =
+        
+        
         
         //Change the color of text in a bottomBar
         UIBarButtonItem.appearance().tintColor = UIColor.white
