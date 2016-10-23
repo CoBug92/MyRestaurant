@@ -44,7 +44,16 @@ class PageViewController: UIPageViewController {
         
         return contentVC
     }
+    
+    func nextVC(atIndex index: Int) {
+        if let ContentVC = displayViewController(atIndex: index + 1) {
+            setViewControllers([ContentVC], direction: .forward, animated: true, completion: nil)
+        }
+    }
+    
 }
+
+
 
 //предоставляет метод для того чтобы контроллер знал откуда брать данные
 extension PageViewController: UIPageViewControllerDataSource {
@@ -59,4 +68,14 @@ extension PageViewController: UIPageViewControllerDataSource {
         index += 1
         return displayViewController(atIndex: index)
     }
+    
+//    //функция для описания кол-ва элементов в массиве
+//    func presentationCount(for pageViewController: UIPageViewController) -> Int {
+//        return headerArray.count
+//    }
+//    
+//    func presentationIndex(for pageViewController: UIPageViewController) -> Int {
+//        let contentVC = storyboard?.instantiateViewController(withIdentifier: "contentViewController") as? ContentViewController
+//        return contentVC.index
+//    }
 }

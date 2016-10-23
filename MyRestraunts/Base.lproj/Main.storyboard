@@ -120,15 +120,15 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7Vl-uA-8tm">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <imageView key="tableHeaderView" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="G6k-Yc-XHX">
-                                    <rect key="frame" x="0.0" y="64" width="375" height="300"/>
+                                    <rect key="frame" x="0.0" y="64" width="1000" height="300"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 </imageView>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="eZP-jI-uLm" customClass="DetailsTableViewCell" customModule="MyRestaurant" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="392" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="392" width="1000" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eZP-jI-uLm" id="y9O-8f-yuP">
-                                            <frame key="frameInset" width="375" height="44"/>
+                                            <frame key="frameInset" width="1000" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kYI-vm-hPl">
@@ -461,10 +461,10 @@ Did you like it?</string>
             </objects>
             <point key="canvasLocation" x="1745" y="815"/>
         </scene>
-        <!--Pa-->
+        <!--Page View Controller-->
         <scene sceneID="vot-GG-2qr">
             <objects>
-                <pageViewController storyboardIdentifier="pageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="ya7-6M-ca5" customClass="Pa" sceneMemberID="viewController"/>
+                <pageViewController storyboardIdentifier="pageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="ya7-6M-ca5" customClass="PageViewController" customModule="MyRestaurant" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pIc-Y7-81C" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1622" y="-787"/>
@@ -486,11 +486,6 @@ Did you like it?</string>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fyN-OF-CyR">
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="360" id="fco-Ot-f6f"/>
-                                </constraints>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Header" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hky-e7-dK0">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="166" id="DIi-65-aBS"/>
@@ -499,15 +494,39 @@ Did you like it?</string>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fyN-OF-CyR">
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="fyN-OF-CyR" secondAttribute="height" multiplier="25:24" id="T04-Vf-tnG"/>
+                                </constraints>
+                            </imageView>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="tNJ-tI-2PG"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Nq-XM-ZTD">
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="124" id="gY2-Li-J24"/>
+                                    <constraint firstAttribute="width" secondItem="7Nq-XM-ZTD" secondAttribute="height" multiplier="62:25" id="loh-ep-oDs"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="20"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="pageButtonPressed:" destination="pMZ-l8-SbB" eventType="touchUpInside" id="F6R-QR-wcH"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="fyN-OF-CyR" firstAttribute="leading" secondItem="0lJ-Sr-Qgk" secondAttribute="leading" id="7i5-YO-3ab"/>
+                            <constraint firstItem="7Nq-XM-ZTD" firstAttribute="centerX" secondItem="0lJ-Sr-Qgk" secondAttribute="centerX" id="HMO-0a-qeT"/>
                             <constraint firstItem="Hky-e7-dK0" firstAttribute="top" secondItem="gif-NW-Vuo" secondAttribute="bottom" id="HPb-VN-w1J"/>
+                            <constraint firstItem="7Nq-XM-ZTD" firstAttribute="top" secondItem="Hky-e7-dK0" secondAttribute="bottom" constant="-50" id="KaO-oy-VgM"/>
                             <constraint firstAttribute="trailing" secondItem="fyN-OF-CyR" secondAttribute="trailing" id="LNy-Dm-83l"/>
                             <constraint firstItem="gif-NW-Vuo" firstAttribute="trailing" secondItem="0lJ-Sr-Qgk" secondAttribute="trailingMargin" id="TST-Oh-gVa"/>
+                            <constraint firstItem="tNJ-tI-2PG" firstAttribute="centerX" secondItem="0lJ-Sr-Qgk" secondAttribute="centerX" id="WXU-en-UGW"/>
                             <constraint firstItem="Hky-e7-dK0" firstAttribute="leading" secondItem="0lJ-Sr-Qgk" secondAttribute="leadingMargin" id="XDo-eG-KzI"/>
                             <constraint firstItem="5GI-xq-8kU" firstAttribute="top" secondItem="fyN-OF-CyR" secondAttribute="bottom" id="dZ0-ov-qCF"/>
+                            <constraint firstItem="5GI-xq-8kU" firstAttribute="top" secondItem="tNJ-tI-2PG" secondAttribute="bottom" id="jjE-FJ-hyo"/>
                             <constraint firstItem="gif-NW-Vuo" firstAttribute="top" secondItem="p7w-WH-tmJ" secondAttribute="bottom" constant="52" id="jqg-IK-3Ou"/>
                             <constraint firstItem="gif-NW-Vuo" firstAttribute="leading" secondItem="0lJ-Sr-Qgk" secondAttribute="leadingMargin" id="mwd-DU-rOU"/>
                             <constraint firstItem="Hky-e7-dK0" firstAttribute="trailing" secondItem="0lJ-Sr-Qgk" secondAttribute="trailingMargin" id="rQx-U3-BYb"/>
@@ -516,6 +535,8 @@ Did you like it?</string>
                     <connections>
                         <outlet property="headerLabel" destination="gif-NW-Vuo" id="CQC-DH-XN5"/>
                         <outlet property="imageView" destination="fyN-OF-CyR" id="RXC-H8-0L0"/>
+                        <outlet property="pageButton" destination="7Nq-XM-ZTD" id="P4X-Xt-o4D"/>
+                        <outlet property="pageControl" destination="tNJ-tI-2PG" id="B9p-mE-Xwy"/>
                         <outlet property="subheaderLabel" destination="Hky-e7-dK0" id="xgz-UM-m5C"/>
                     </connections>
                 </viewController>

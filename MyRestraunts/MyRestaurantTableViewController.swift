@@ -73,6 +73,12 @@ class MyRestaurantTableViewController: UITableViewController, NSFetchedResultsCo
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
+        let userDefaults = UserDefaults.standard
+        let wasInWatched = userDefaults.bool(forKey: "wasInWatched")
+        
+        guard !wasInWatched else { return }
+        
         //Вызов PageViewController по его идентификатору
         if let PageViewController = storyboard?.instantiateViewController(withIdentifier: "pageViewController") as? PageViewController {
             //отображаем контроллер
