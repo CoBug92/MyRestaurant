@@ -39,15 +39,15 @@ class AddRestaurantTableViewController: UITableViewController, UIImagePickerCont
         //Iteration which describe action when user touch photo row
         if indexPath.row == 0 {
             //Create alertController which show possible action
-            let allertController = UIAlertController(title: "Choose right action", message: nil, preferredStyle: .actionSheet)
+            let allertController = UIAlertController(title: NSLocalizedString("Choose right action", comment: "Choose right action"), message: nil, preferredStyle: .actionSheet)
             //Create possible action
-            let cancelAction = UIAlertAction(title: "Camera", style: .default, handler: {(action) in
+            let cancelAction = UIAlertAction(title: NSLocalizedString( "Camera", comment:  "Camera"), style: .default, handler: {(action) in
                 self.chooseImagePickerAction(source: .camera)
             })
-            let photoLibraryAction = UIAlertAction(title: "Photo Library", style: .default, handler: { (action) in
+            let photoLibraryAction = UIAlertAction(title: NSLocalizedString("Photo Library", comment: "Photo Library") , style: .default, handler: { (action) in
                 self.chooseImagePickerAction(source: .photoLibrary)
             })
-            let cameraAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            let cameraAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: "Cancel"), style: .cancel, handler: nil)
             //Add all action in the actionSheet
             allertController.addAction(cameraAction)
             allertController.addAction(photoLibraryAction)

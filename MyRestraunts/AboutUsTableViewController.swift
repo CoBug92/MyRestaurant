@@ -12,13 +12,14 @@ class AboutUsTableViewController: UITableViewController {
     
     
     let sectionsHeaders = ["We are in the social networks", "Our sites"]
-    let sectionsContent = [["facebook", "vk", "linkdin"],["https://github.com/CoBug92"]]
-    let firstSectionsLinks = [["https://www.facebook.com/CoBugs", "https://vk.com/kostyuchenkobogdan", "https://www.linkedin.com/in/bogdan-kostyuchenko-17119ba0?trk=nav_responsive_tab_profile_pic"],[]]
+    let sectionsContent = [["facebook", "vk", "linkdin"],["I have not a site yet:("]]
+    let firstSectionLinks = ["https://www.facebook.com/CoBugs", "https://vk.com/kostyuchenkobogdan", "https://www.linkedin.com/in/bogdan-kostyuchenko-17119ba0?trk=nav_responsive_tab_profile_pic"]
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.tableFooterView = UIView(frame: .zero)
+        tableView.tableHeaderView = UIView(frame: .zero)
     }
     
     
@@ -45,7 +46,28 @@ class AboutUsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        switch indexPath.section {
+        case 0:
+            switch indexPath.row {
+            case 0..<firstSectionLinks.count:
+                performSegue(withIdentifier: "showWebPageSegue", sender: self)
+            default: break
+            }
+        default: break
+        }
+        
         tableView.deselectRow(at: indexPath, animated: true)
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showWebPageSegue" {
+            if let indexPath = tableView.indexPathForSelectedRow {
+                let destinationVC = segue.destination as! WebViewController
+                destinationVC.url = URL(string: firstSectionLinks[indexPath.row])
+            }
+        }
     }
     
 }
