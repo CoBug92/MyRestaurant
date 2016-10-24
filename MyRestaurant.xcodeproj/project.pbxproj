@@ -13,6 +13,7 @@
 		431579641DB52ABE00DA215C /* AddRestaurantTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431579631DB52ABE00DA215C /* AddRestaurantTableViewController.swift */; };
 		434404D51DA772AF001622E8 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434404D41DA772AF001622E8 /* DetailsViewController.swift */; };
 		4356B39E1DB70552005CE5EB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4356B39D1DB70552005CE5EB /* Assets.xcassets */; };
+		4382AA111DBE2DEB007D4D75 /* AboutUsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4382AA101DBE2DEB007D4D75 /* AboutUsTableViewController.swift */; };
 		4389BDF41DACE97500963CD4 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4389BDF31DACE97500963CD4 /* ShareViewController.swift */; };
 		4389BDF71DACFBAB00963CD4 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4389BDF61DACFBAB00963CD4 /* MapKit.framework */; };
 		4389BDF91DACFDF200963CD4 /* MapRestaurantsLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4389BDF81DACFDF200963CD4 /* MapRestaurantsLocationViewController.swift */; };
@@ -52,6 +53,7 @@
 		431579631DB52ABE00DA215C /* AddRestaurantTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddRestaurantTableViewController.swift; sourceTree = "<group>"; };
 		434404D41DA772AF001622E8 /* DetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DetailsViewController.swift; path = ../DetailsViewController.swift; sourceTree = "<group>"; };
 		4356B39D1DB70552005CE5EB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4382AA101DBE2DEB007D4D75 /* AboutUsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutUsTableViewController.swift; sourceTree = "<group>"; };
 		4389BDF31DACE97500963CD4 /* ShareViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		4389BDF61DACFBAB00963CD4 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		4389BDF81DACFDF200963CD4 /* MapRestaurantsLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapRestaurantsLocationViewController.swift; sourceTree = "<group>"; };
@@ -171,6 +173,7 @@
 				43F3E1561DA28101002BD7B1 /* AppDelegate.swift */,
 				43145D581DB79937004E9910 /* CoreDataStack.swift */,
 				43F3E15A1DA28101002BD7B1 /* Main.storyboard */,
+				4382AA101DBE2DEB007D4D75 /* AboutUsTableViewController.swift */,
 				431579631DB52ABE00DA215C /* AddRestaurantTableViewController.swift */,
 				4356B39B1DB702C6005CE5EB /* MyRestaurant */,
 				4356B39C1DB702CF005CE5EB /* Details */,
@@ -357,6 +360,7 @@
 			files = (
 				43A712DF1DBA50F80039D3E1 /* ContentViewController.swift in Sources */,
 				43B019D31DA8FF7200A27BA8 /* DetailsTableViewCell.swift in Sources */,
+				4382AA111DBE2DEB007D4D75 /* AboutUsTableViewController.swift in Sources */,
 				431579641DB52ABE00DA215C /* AddRestaurantTableViewController.swift in Sources */,
 				43145D591DB79937004E9910 /* CoreDataStack.swift in Sources */,
 				431579621DB5267000DA215C /* MyRestaurant.xcdatamodel in Sources */,

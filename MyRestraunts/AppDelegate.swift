@@ -38,7 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //при скрытии верхних баров остает зеленая полоска статус бара
         statusBarView.backgroundColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
         //устанавливаем наш статусБарВью в качестве сабВью на 1 позицию
-        self.window?.rootViewController?.view.insertSubview(statusBarView, at: 1)
+        self.window?.rootViewController?.view.insertSubview(statusBarView, at: 0)
 //        UISearchBar.appearance().barTintColor =
         
         
@@ -47,6 +47,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIBarButtonItem.appearance().tintColor = UIColor.white
         //Change the color of a bottomBar
         UIToolbar.appearance().barTintColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
+        
+        UITabBar.appearance().tintColor = .white
+        UITabBar.appearance().barTintColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
+        UITabBar.appearance().selectionIndicatorImage = UIImage(named: "tabSelectBG")
+        
+        
         return true
     }
     
