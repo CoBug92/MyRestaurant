@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         //Change the color of a navigationBar
-        UINavigationBar.appearance().barTintColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
+        UINavigationBar.appearance().barTintColor = #colorLiteral(red: 0.294891957, green: 0.5411809029, blue: 0.1502480112, alpha: 1)
         //Change the Font
         if let font = UIFont(name: "AppleSDGothicNeo-SemiBold", size: 22.0) {
             UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white, NSFontAttributeName: font]
@@ -32,14 +32,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //Change the color of link in a navigatonBar
         UINavigationBar.appearance().tintColor = UIColor.white
         
-        
-        
+
         let statusBarView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: 20))
         //при скрытии верхних баров остает зеленая полоска статус бара
-        statusBarView.backgroundColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
+        statusBarView.backgroundColor = #colorLiteral(red: 0.3411764706, green: 0.6235294118, blue: 0.168627451, alpha: 1)
         //устанавливаем наш статусБарВью в качестве сабВью на 1 позицию
-        self.window?.rootViewController?.view.insertSubview(statusBarView, at: 0)
-//        UISearchBar.appearance().barTintColor =
+        self.window?.rootViewController?.view.insertSubview(statusBarView, at: 1)
+//        UISearchBar.appearance().barTintColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
         
         
         

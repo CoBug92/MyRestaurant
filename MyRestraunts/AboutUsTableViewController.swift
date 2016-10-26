@@ -18,8 +18,7 @@ class AboutUsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        tableView.tableHeaderView = UIView(frame: .zero)
+        self.tableView.tableFooterView = UIView(frame: CGRect.zero)
     }
     
     
@@ -60,6 +59,8 @@ class AboutUsTableViewController: UITableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
         
     }
+    
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showWebPageSegue" {

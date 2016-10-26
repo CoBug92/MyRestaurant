@@ -122,7 +122,7 @@ class AddRestaurantTableViewController: UITableViewController, UIImagePickerCont
         if error == 0 {
             //get context with whom we will work
             if let context = (UIApplication.shared.delegate as? AppDelegate)?.coreDataStack.persistentContainer.viewContext {
-                //create cope our class in the context
+                //create copy our class in the context
                 let restaurant = Restaurant(context: context)
                 //Add all value in a Restaurant
                 restaurant.name = nameTextField.text

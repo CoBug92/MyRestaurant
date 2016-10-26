@@ -106,14 +106,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		43145D571DB77D07004E9910 /* Share, Rate &  Map */ = {
+		43145D571DB77D07004E9910 /* Share, Rate, AboutUs &  Map */ = {
 			isa = PBXGroup;
 			children = (
+				4382AA101DBE2DEB007D4D75 /* AboutUsTableViewController.swift */,
 				4389BDF31DACE97500963CD4 /* ShareViewController.swift */,
-				4389BDF81DACFDF200963CD4 /* MapRestaurantsLocationViewController.swift */,
 				43138DEC1DAC0D7B0059E470 /* QuickReviewViewController.swift */,
 			);
-			name = "Share, Rate &  Map";
+			name = "Share, Rate, AboutUs &  Map";
 			sourceTree = "<group>";
 		};
 		4356B39B1DB702C6005CE5EB /* MyRestaurant */ = {
@@ -132,6 +132,15 @@
 				43B019D21DA8FF7200A27BA8 /* DetailsTableViewCell.swift */,
 			);
 			name = Details;
+			sourceTree = "<group>";
+		};
+		4367F70D1DC03BE300FCC484 /* Web & Map */ = {
+			isa = PBXGroup;
+			children = (
+				4382AA121DBE368E007D4D75 /* WebViewController.swift */,
+				4389BDF81DACFDF200963CD4 /* MapRestaurantsLocationViewController.swift */,
+			);
+			name = "Web & Map";
 			sourceTree = "<group>";
 		};
 		4389BDF51DACFBAB00963CD4 /* Frameworks */ = {
@@ -179,12 +188,11 @@
 				43F3E1561DA28101002BD7B1 /* AppDelegate.swift */,
 				43145D581DB79937004E9910 /* CoreDataStack.swift */,
 				43F3E15A1DA28101002BD7B1 /* Main.storyboard */,
-				4382AA121DBE368E007D4D75 /* WebViewController.swift */,
-				4382AA101DBE2DEB007D4D75 /* AboutUsTableViewController.swift */,
 				431579631DB52ABE00DA215C /* AddRestaurantTableViewController.swift */,
 				4356B39B1DB702C6005CE5EB /* MyRestaurant */,
 				4356B39C1DB702CF005CE5EB /* Details */,
-				43145D571DB77D07004E9910 /* Share, Rate &  Map */,
+				43145D571DB77D07004E9910 /* Share, Rate, AboutUs &  Map */,
+				4367F70D1DC03BE300FCC484 /* Web & Map */,
 				43A712E01DBA511D0039D3E1 /* Pages */,
 				43F3E1841DA281F6002BD7B1 /* Supporting files */,
 			);

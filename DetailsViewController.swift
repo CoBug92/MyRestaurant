@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import CoreData
+
 
 class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource  {
     
@@ -28,6 +30,11 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if restaurant?.rate == nil {
+           rateButton.setImage(UIImage(named: "rating"), for: UIControlState.normal)
+        } else {
+            rateButton.setImage(UIImage(named: (restaurant?.rate)!), for: UIControlState.normal)
+        }
         
         //Download nacessory image
         self.restaurantImageView.image = UIImage(data: restaurant?.image as! Data)
@@ -89,6 +96,7 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     
+    
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         //Compare number of row. If number of row is 2 (location) {
@@ -111,5 +119,15 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
         guard let svc = segue.source as? QuickReviewViewController else { return }
         guard let rating = svc.restRating else { return }
         rateButton.setImage(UIImage(named: rating), for: .normal)
+        if let context = (UIApplication.shared.delegate as? AppDelegate)?.coreDataStack.persistentContainer.viewContext {
+            //Add all value in a Restaurant
+            restaurant?.rate = rating
+            //Save context
+            do {
+                try context.save()
+            } catch let error as NSError {
+                print("Couldn't save data \(error), \(error.userInfo)")
+            }
+        }
     }
 }
